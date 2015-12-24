@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Christmas Adventure</title>
+<script src="App.js"></script>
+<link rel="stylesheet" type="text/css" href="app.css">
+<script src="resources.js"></script>
+<script src="Sprite.js"></script>
+<script src="GameObject.js"></script>
+<script src="Something.js"></script>
+<script src="Panel.js"></script>
+ <style>
+   * {
+    margin: 0;
+    padding: 0;
+   }
+canvas {
+cursor:none;
+}
+  </style>
+</head>
+<body>
+
+<div id="game-over">
+    <input type="image" style="position:absolute;" src="GOBackToMenu.png" id="Image1" onclick="MainMenu()">
+    <img id="GameOverImg" style="position:absolute;margin-left:40%;" src="Game_Over.png" height="200" width="300">
+    <input style="position:absolute;margin-top:18%;margin-left:38%;" type="image" src="GORestart.png" id="play-again" onclick="reset()">
+    <div>
+        <h1 id="TimeScore" style="margin-left: 40%;margin-top:15%">x1</h1>
+    </div>
+    
+</div>
+<div id ="Menu">
+    <input id="First" type="image" src="Start.png" onclick="StartGame()">
+    <input type="image" src="Info.png" onclick="Information()">
+</div>
+<div  id="PauseGame">
+    <input type="image" src="GOBackToMenu.png" onclick="MainMenu()" style="float: left;">
+    <h1 style="color: black;margin-left:40%">Game Paused</h1>
+    <div style="margin-top: 30%;margin-left: 25%;position: absolute;"><input type="image" src="GORestart.png"   onclick="reset()"></div>
+</div>
+<div id="info">
+    <input type="image" src="BackToMenu.png" onclick="MainMenu()" style="float: left;">
+    <h1 style="color: #0e49f0;margin-left:45%;">Information</h1>
+    <img style="margin-top: 2%;margin-left: 7%;" width="500" height="300" src="InfoImage.PNG" />
+    <div id="text">
+    <p  style="font-size:24px; margin-top: 2%;font-weight:bold; color: #0e49f0;text-align:center;">
+        Данная игра была создана по мотивам мультфильма "Хранители снов". Основными врагами является служители злого духа Кромешника.
+        Для того, чтобы начать игру требуется нажать кнопку "Start". Для управления персонажем в игровой области вам необходимо перемещать мышь и нажимать на левую клавишу,чтобы
+        атаковать. Чтобы пополнить свой запас жизней требуется собирать "сердца", которые переодически появляются на карте. Также для того, чтобы ваш персонаж мог атаковать 
+        следует собирать снежинки, которые являются вашими боеприпасами. Их количество отображается в правом верхнем углу экрана. Пауза игры вызывается клавишей "Escape".
+        Игра является бесконечной, а ваша цель заключается в том, чтобы набрать наибольшее количество очков. Приятной игры !
+    </p>
+    </div>
+</div>
+
+</body>
+</html>
