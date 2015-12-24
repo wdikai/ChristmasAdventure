@@ -12,6 +12,12 @@
     display: none;
 }
 
+#buttons-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
 #First{
 
    margin-left: 40%;
