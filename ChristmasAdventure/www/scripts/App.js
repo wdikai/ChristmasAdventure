@@ -24,14 +24,14 @@ function init()
 {
     play = true;
     light = true;
-	background = new GameObject("Background",1366,canvas.height,0,0,'Background.jpg',7);
+	background = new GameObject("Background",1366,canvas.height,0,0,'images/backgrounds/Background.jpg',7);
 	background.update = function()
 	{
 		if(background.x <-background.width)
 		background.x = background2.x + background2.width;
 		background.x -= background.speed;
 	}
-	background2 = new GameObject("Background",background.width,canvas.height,background.width,0,'Background.jpg',background.speed);
+	background2 = new GameObject("Background",background.width,canvas.height,background.width,0,'images/backgrounds/Background.jpg',background.speed);
 	background2.update = function()
 	{
 		if(background2.x <-background.width)
@@ -39,7 +39,7 @@ function init()
 		background2.x -= background2.speed;
 	}
 	lastTime = Date.now();
-	player = new Player(100, 100, 100, canvas.height / 2, 'Player.png', 3);
+	player = new Player(100, 100, 100, canvas.height / 2, 'images/entities/Player.png', 3);
 	GameEnd = false;
 	GameObjects = [];
 	pastTime = 0;
@@ -53,7 +53,15 @@ function init()
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
     ctx.fillStyle = '#ccc';
-    resources.load(['Background.jpg', 'Player.png', 'Ice.png', 'FrameHorse.png', 'Balls.png', 'Monster.png', 'Life.png', 'Iceimg.png']);
+    resources.load(
+        ['images/backgrounds/Background.jpg',
+         'images/entities/Player.png',
+         'images/entities/Ice.png', 
+         'images/entities/FrameHorse.png', 
+         'images/entities/Balls.png', 
+         'images/entities/Monster.png', 
+         'images/ui/Life.png', 
+         'images/Iceimg.png']);
 	resources.onReady(main);
 	}
 var lastTime;
@@ -73,8 +81,8 @@ function main() {
 };
 function render(ctx)
 {
-	ctx.drawImage(resources.get('Background.jpg'),background.x,background.y,background.width,background.height);
-	ctx.drawImage(resources.get('Background.jpg'),background2.x,background2.y,background2.width,background2.height);
+	ctx.drawImage(resources.get('images/backgrounds/Background.jpg'),background.x,background.y,background.width,background.height);
+	ctx.drawImage(resources.get('images/backgrounds/Background.jpg'),background2.x,background2.y,background2.width,background2.height);
     DrawLife();
     DrawCookies();
 	DrawEntity(ctx);
@@ -122,7 +130,7 @@ function rand(min,max){
 }
 document.onclick = function (e) {
     if (pastTime > 1 && player.ice > 0 && GameEnd == false && e.offsetX > canvas.width / 2) {
-        Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height, 'Balls.png', 10);
+        Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height, 'images/entities/Balls.png', 10);
         Ball.collision = player.collision;
         GameObjects.push(Ball);
         player.ice--;
@@ -153,27 +161,27 @@ function AdditionEntities(pastTime)
 {
 	if(pastTime>Icetemp)
 	{
-	    GameObjects.push(new GameObject("Ice", 48, 48, rand(canvas.width + 30, canvas.width + background.width), rand(50, canvas.height - 48), 'Ice.png', rand(8, 15)));
+	    GameObjects.push(new GameObject("Ice", 48, 48, rand(canvas.width + 30, canvas.width + background.width), rand(50, canvas.height - 48), 'images/entities/Ice.png', rand(8, 15)));
 		Icetemp = pastTime+1;
 	}
 	if(parseInt(pastTime, 10)>Sputniktemp)
 	{
         for(i=0;i<rand(1,4);i++)
-		GameObjects.push(new GameObject("Monster",100,100,rand(canvas.width+30,10000),rand(50,canvas.height-200),'Monster.png',rand(10,20)));
+		GameObjects.push(new GameObject("Monster",100,100,rand(canvas.width+30,10000),rand(50,canvas.height-200),'images/entities/Monster.png',rand(10,20)));
 		Sputniktemp = parseInt(pastTime, 10)+rand(4,8);
 	}
 	if (parseInt(pastTime, 10) > Horsetemp)
 	{
         for(i=0;i<rand(1,20);i++)
-		GameObjects.push(new GameObject("Horse",167,100,rand(canvas.width+30,10000),rand(50,canvas.height-56),'FrameHorse.png',rand(10,20)));
+		GameObjects.push(new GameObject("Horse",167,100,rand(canvas.width+30,10000),rand(50,canvas.height-56),'images/entities/FrameHorse.png',rand(10,20)));
 		Horsetemp = parseInt(pastTime, 10)+rand(4,8);
 	}
     if(parseInt(pastTime, 10)>Lifetemp)
     {
-        life = new GameObject("Life",55,55,rand(canvas.width+30,canvas.width+background.width),rand(50,canvas.height-56),'Life.png',10);
+        life = new GameObject("Life",55,55,rand(canvas.width+30,canvas.width+background.width),rand(50,canvas.height-56),'images/ui/Life.png',10);
         life.draw = function(ctx)
         {
-            ctx.drawImage(resources.get('Life.png'),0,0,55,55,this.sprite.entity_pos[0],this.sprite.entity_pos[1],50,50);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,this.sprite.entity_pos[0],this.sprite.entity_pos[1],50,50);
         }
         GameObjects.push(life);
         Lifetemp = parseInt(pastTime, 10)+rand(30,50);
@@ -237,7 +245,7 @@ function RemoveEntity(){
 }
 function DrawCookies()
 {
-    ctx.drawImage(resources.get('Iceimg.png'), 0, 0, 47, 51, canvas.width/1.1 - 78, 0, 47, 51);
+    ctx.drawImage(resources.get('images/Iceimg.png'), 0, 0, 47, 51, canvas.width / 1.1 - 78, 0, 47, 51);
     ctx.fillText('X'+player.ice,canvas.width/1.1,0);
     ctx.fillText('Scores:'+(pastTime*5.5).toFixed(),canvas.width/2,0);
 
@@ -247,19 +255,19 @@ function DrawLife()
     switch (player.life)
     {
         case 1:
-            ctx.drawImage(resources.get('Life.png'),0,57,55,55,85,0,50,50);
-            ctx.drawImage(resources.get('Life.png'),0,57,55,55,40,0,45,45);
-            ctx.drawImage(resources.get('Life.png'),0,0,55,55,0,0,40,40);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,57,55,55,85,0,50,50);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,57,55,55,40,0,45,45);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,0,0,40,40);
             break;
         case 2:
-            ctx.drawImage(resources.get('Life.png'),0,57,55,55,85,0,50,50);
-            ctx.drawImage(resources.get('Life.png'),0,0,55,55,40,0,45,45);
-            ctx.drawImage(resources.get('Life.png'),0,0,55,55,0,0,40,40);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,57,55,55,85,0,50,50);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,40,0,45,45);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,0,0,40,40);
             break;
         case 3:
-            ctx.drawImage(resources.get('Life.png'),0,0,55,55,85,0,50,50);
-            ctx.drawImage(resources.get('Life.png'),0,0,55,55,40,0,45,45);
-            ctx.drawImage(resources.get('Life.png'),0,0,55,55,0,0,40,40);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,85,0,50,50);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,40,0,45,45);
+            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,0,0,40,40);
             break;
         default:
             GameOver();
