@@ -121,7 +121,7 @@ function rand(min,max){
 	return rand;
 }
 document.onclick = function (e) {
-    if (pastTime > 1 && player.ice > 0 && GameEnd == false) {
+    if (pastTime > 1 && player.ice > 0 && GameEnd == false && e.offsetX > canvas.width / 2) {
         Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height, 'Balls.png', 10);
         Ball.collision = player.collision;
         GameObjects.push(Ball);
@@ -237,9 +237,9 @@ function RemoveEntity(){
 }
 function DrawCookies()
 {
-    ctx.drawImage(resources.get('Iceimg.png'), 0, 0, 47, 51, canvas.width - 250, 0, 47, 51);
-    ctx.fillText('X'+player.ice,canvas.width-150,0);
-    ctx.fillText('Scores:'+(pastTime*5.5).toFixed(),canvas.width-650,0);
+    ctx.drawImage(resources.get('Iceimg.png'), 0, 0, 47, 51, canvas.width/1.1 - 78, 0, 47, 51);
+    ctx.fillText('X'+player.ice,canvas.width/1.1,0);
+    ctx.fillText('Scores:'+(pastTime*5.5).toFixed(),canvas.width/2,0);
 
 }
 function DrawLife()
