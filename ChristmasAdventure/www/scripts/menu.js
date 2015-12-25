@@ -17,7 +17,6 @@
 			$("#achivment-list").show();
 		});
 
-
 		$("#game-button").click(StartGame);
 	});
 })()

@@ -58,12 +58,12 @@ function init() {
     resources.load(
         [
             'images/backgrounds/Background.jpg',
-         'images/entities/Player.png',
-         'images/entities/Ice.png', 
-         'images/entities/FrameHorse.png', 
-         'images/entities/Balls.png', 
-         'images/entities/Monster.png', 
-         'images/ui/Life.png', 
+            'images/entities/Player.png',
+            'images/entities/Ice.png', 
+            'images/entities/FrameHorse.png', 
+            'images/entities/Balls.png', 
+            'images/entities/Monster.png', 
+            'images/ui/Life.png', 
             'images/Iceimg.png'
         ]);
 	resources.onReady(main);
