@@ -1,15 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    cursor:none;
+}
+
+#back-to-menu{
+    position:absolute;
+}
+
+.back-to-menu{
+    float: left;
+}
+
+#play-again{
+    position:absolute;
+    margin-top:18%;
+    margin-left:38%;
+}
+
+#time-score{
+    margin-left: 40%;
+    margin-top:15%
+}
+
+#PauseGame h1{
+    color: black;
+    margin-left:40%
+}
+
 #game-over {
     margin: auto;
     width: 100%;
     height: 100%;
     position: absolute;
-    background-image: url(GameEnd.png);
+    background-image: url(images/backgrounds/GameEnd.png);
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 1;
     display: none;
+}
+
+img#GameOverImg {
+    position:absolute;
+    margin-left:40%;
 }
 
 #buttons-panel {
@@ -30,13 +68,13 @@
 #Menu{
     width:100%;
     height:100%;
-    background-image: url(BG_Menu.png);
+    background-image: url(images/backgrounds/BG_Menu.png);
 }
 #PauseGame{
     margin: auto;
     width: 100%;
     height: 100%;
-    background-image: url(ForPause.png);
+    background-image: url(images/backgrounds/ForPause.png);
     position: absolute;
     top: 0;
     left: 0;
@@ -49,7 +87,7 @@
     margin: auto;
     width: 100%;
     height: 100%;
-    background-image: url(BG_Menu.png);
+    background-image: url(images/backgrounds/BG_Menu.png);
     position: absolute;
     top: 0;
     left: 0;
