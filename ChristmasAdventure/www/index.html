@@ -7,7 +7,7 @@
     <body>
         <canvas id="canvas"></canvas>
         <div id="game-over">
-            <input type="image" src="images/ui/GOBackToMenu.png" id="back-to-menu" onclick="MainMenu()">
+            <input type="image" src="images/ui/BackToMenu.png" id="back-to-menu" onclick="MainMenu()">
             <img id="GameOverImg" src="images/ui/Game_Over.png" height="160" width="300">
         <br />
             <div id="time-score">
@@ -29,7 +29,7 @@
             </p>
         </div>
         <div id="PauseGame">
-            <input class="back-to-menu" type="image" src="images/ui/GOBackToMenu.png" onclick="MainMenu()">
+            <input class="back-to-menu" type="image" src="images/ui/BackToMenu.png" onclick="MainMenu()">
                 <h1>Game Paused</h1>
                 <div style="margin-top: 30%;margin-left: 25%;position: absolute;">
                 <input type="image" src="images/ui/GORestart.png" onclick="reset()">
@@ -72,6 +72,7 @@
     <script src="scripts/jquery-2.1.4.min.js"></script>
 
     <script src="scripts/resources.js"></script>
+    <script src="scripts/Audio.js"></script>
     <script src="scripts/score.js"></script>
     <script src="scripts/Sprite.js"></script>
     <script src="scripts/GameObject.js"></script>

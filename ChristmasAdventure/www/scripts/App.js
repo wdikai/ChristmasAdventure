@@ -14,7 +14,22 @@ var ctx = canvas.getContext('2d');
 canvas.width = document.documentElement.scrollWidth;
 canvas.height = document.documentElement.scrollHeight;
 
+var mainSound = SoundManager.Sound("Main", "sounds/help.mp3", true);
+var windSound = SoundManager.Sound("Wind", "sounds/wind.mp3", true);
+var snowSound = SoundManager.Sound("Snow", "sounds/snow.mp3");
+var horseSound = SoundManager.Sound("Horse", "sounds/horse.mp3");
+var loseSound = SoundManager.Sound("Lose", "sounds/lose.mp3");
+SoundManager.addSound(mainSound);
+SoundManager.addSound(windSound);
+SoundManager.addSound(snowSound);
+SoundManager.addSound(horseSound);
+SoundManager.addSound(loseSound);
+SoundManager.play("Main");
+
+
 function StartGame() {
+    SoundManager.stop("Main");
+    SoundManager.play("Wind");
     canvas.width = document.documentElement.scrollWidth;
     canvas.height = document.documentElement.scrollHeight;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -127,6 +142,7 @@ document.getElementById("shot").addEventListener("touchstart", function (e) {
         Ball.collision = player.collision;
         GameObjects.push(Ball);
         player.ice--;
+        SoundManager.play("Snow");
     }
 });
 
@@ -177,6 +193,9 @@ function checkCollisions(pastTime) {
     if (TempCollision < parseInt(pastTime, 10)) {
         for (i = 0; i < GameObjects.length; i++) {
             if (player.collision(GameObjects[i]) && GameObjects[i].type != "Ice" && GameObjects[i].type != "Life" && GameObjects[i].type != "Ball") {
+                if(GameObjects[i].type === "Horse"){
+                    SoundManager.play("Horse");
+                }
                 player.life--;
                 TempCollision = parseInt(pastTime, 10) + 3;
                 break;
@@ -259,6 +278,8 @@ function GameOver() {
     GameEnd = true;
     document.getElementById('control-block').style.display = 'none';
     document.getElementById('PauseGame').style.display = 'none';
+    SoundManager.stop("Wind");
+    SoundManager.play("Lose");
     var TimeScore = document.getElementById('time-score');
     var score = (pastTime * 5.5).toFixed();
     TimeScore.innerHTML = '<h1>Результат: ' + score + '</h1>';
@@ -284,6 +305,7 @@ function MainMenu() {
         $('#achivment-list').hide();
         $('#Menu').show();
         play = false;
+        SoundManager.play("Main");
     }
 
 function PauseGame() {
