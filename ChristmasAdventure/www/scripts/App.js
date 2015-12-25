@@ -1,11 +1,11 @@
 // Create the canvas
-var requestAnimFrame = (function(){
-    return window.requestAnimationFrame       ||
+var requestAnimFrame = (function () {
+    return window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame    ||
-        window.oRequestAnimationFrame      ||
-        window.msRequestAnimationFrame     ||
-        function(callback){
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function (callback) {
             window.setTimeout(callback, 1000 / 60);
         };
 })();
@@ -13,28 +13,29 @@ var canvas = document.createElement("canvas");
 var ctx = canvas.getContext('2d');
 canvas.width = document.documentElement.scrollWidth;
 canvas.height = document.documentElement.scrollHeight;
-function StartGame(){
-ctx.fillRect(0,0,canvas.width,canvas.height);
+function StartGame() {
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 document.getElementById('Menu').style.display = 'none';
 document.getElementById('PauseGame').style.display = 'none';
+    document.getElementById('UpButton').style.display = 'block';
+    document.getElementById('BottomButton').style.display = 'block';
 document.body.appendChild(canvas);
 init();
 }
-function init()
-{
+function init() {
     play = true;
     light = true;
-	background = new GameObject("Background",1366,canvas.height,0,0,'images/backgrounds/Background.jpg',7);
-	background.update = function()
-	{
-		if(background.x <-background.width)
+    holdButton(document.getElementById("UpButton"), playerUp, 10);
+    holdButton(document.getElementById("BottomButton"), playerDown, 10);
+    background = new GameObject("Background", 1366, canvas.height, 0, 0, 'images/backgrounds/Background.jpg', 7);
+    background.update = function () {
+        if (background.x < -background.width)
 		background.x = background2.x + background2.width;
 		background.x -= background.speed;
 	}
-	background2 = new GameObject("Background",background.width,canvas.height,background.width,0,'images/backgrounds/Background.jpg',background.speed);
-	background2.update = function()
-	{
-		if(background2.x <-background.width)
+    background2 = new GameObject("Background", background.width, canvas.height, background.width, 0, 'images/backgrounds/Background.jpg', background.speed);
+    background2.update = function () {
+        if (background2.x < -background.width)
 		background2.x = background.x + background.width;
 		background2.x -= background2.speed;
 	}
@@ -66,10 +67,10 @@ function init()
 	}
 var lastTime;
 function main() {
-    if(play == true&&GameEnd == false){
+    if (play == true && GameEnd == false) {
     var now = Date.now();
     var dt = (now - lastTime) / 1000.0;
-	pastTime +=dt;
+        pastTime += dt;
 	AdditionEntities(pastTime);
     update(dt);
     render(ctx);
@@ -79,52 +80,40 @@ function main() {
     }
     requestAnimFrame(main);
 };
-function render(ctx)
-{
-	ctx.drawImage(resources.get('images/backgrounds/Background.jpg'),background.x,background.y,background.width,background.height);
-	ctx.drawImage(resources.get('images/backgrounds/Background.jpg'),background2.x,background2.y,background2.width,background2.height);
+function render(ctx) {
+    ctx.drawImage(resources.get('images/backgrounds/Background.jpg'), background.x, background.y, background.width, background.height);
+    ctx.drawImage(resources.get('images/backgrounds/Background.jpg'), background2.x, background2.y, background2.width, background2.height);
     DrawLife();
     DrawCookies();
 	DrawEntity(ctx);
-    if(TempCollision > pastTime)
-    {
-    if(light)
-    {
+    if (TempCollision > pastTime) {
+        if (light) {
         player.sprite.render(ctx);
-        light=!light;
+            light = !light;
     }
-    else
-    {
+        else {
         light = !light;
     }
     }
-    else
-    {
+    else {
         player.sprite.render(ctx);
     }
 
 
 }
-function update(dt)
-{
+function update(dt) {
 	background.update();
 	background2.update();
 	player.sprite.update(dt);
-	for(i = 0;i < GameObjects.length;i++)
+    for (i = 0; i < GameObjects.length; i++)
 	    if (GameObjects[i].type != "Monster")
 	GameObjects[i].update(dt);
     else
-    GameObjects[i].update(dt,'sin');
+            GameObjects[i].update(dt, 'sin');
 }
-document.onmousemove = function(event) {
-if(event.pageY<canvas.height-player.height/3 && event.pageY > 50)
-{
-	player.sprite.entity_pos[0] = event.pageX-player.width/2;
- 	player.sprite.entity_pos[1] = event.pageY-player.height/2;
-}
-} 
-function rand(min,max){
-	var rand = min - 0.5 + Math.random()*(max-min+1)
+
+function rand(min, max) {
+    var rand = min - 0.5 + Math.random() * (max - min + 1)
 	rand = Math.round(rand);
 	return rand;
 }
@@ -137,7 +126,7 @@ document.onclick = function (e) {
     }
 
 }
-document.onkeydown = function(e){
+document.onkeydown = function (e) {
     var kodKlavishi;
     if (e) {
         kodKlavishi = e.which;
@@ -145,51 +134,43 @@ document.onkeydown = function(e){
     else if (window.event) {
         kodKlavishi = window.event.keyCode;
     }
-    if (kodKlavishi == 27 && pastTime > 1 && GameEnd == false)
-    {
+    if (kodKlavishi == 27 && pastTime > 1 && GameEnd == false) {
         PauseGame();
     }
 
 }
-function DrawEntity(ctx)
-{
-		for(i = 0;i < GameObjects.length;i++)
+function DrawEntity(ctx) {
+    for (i = 0; i < GameObjects.length; i++)
 		GameObjects[i].draw(ctx);
 }
 
-function AdditionEntities(pastTime)
-{
-	if(pastTime>Icetemp)
-	{
+function AdditionEntities(pastTime) {
+    if (pastTime > Icetemp) {
 	    GameObjects.push(new GameObject("Ice", 48, 48, rand(canvas.width + 30, canvas.width + background.width), rand(50, canvas.height - 48), 'images/entities/Ice.png', rand(8, 15)));
-		Icetemp = pastTime+1;
+        Icetemp = pastTime + 1;
 	}
-	if(parseInt(pastTime, 10)>Sputniktemp)
-	{
-        for(i=0;i<rand(1,4);i++)
-		GameObjects.push(new GameObject("Monster",100,100,rand(canvas.width+30,10000),rand(50,canvas.height-200),'images/entities/Monster.png',rand(10,20)));
-		Sputniktemp = parseInt(pastTime, 10)+rand(4,8);
+    if (parseInt(pastTime, 10) > Sputniktemp) {
+        for (i = 0; i < rand(1, 4) ; i++)
+            GameObjects.push(new GameObject("Monster", 100, 100, rand(canvas.width + 30, 10000), rand(50, canvas.height - 200), 'images/entities/Monster.png', rand(10, 20)));
+        Sputniktemp = parseInt(pastTime, 10) + rand(4, 8);
 	}
-	if (parseInt(pastTime, 10) > Horsetemp)
-	{
-        for(i=0;i<rand(1,20);i++)
-		GameObjects.push(new GameObject("Horse",167,100,rand(canvas.width+30,10000),rand(50,canvas.height-56),'images/entities/FrameHorse.png',rand(10,20)));
-		Horsetemp = parseInt(pastTime, 10)+rand(4,8);
+    if (parseInt(pastTime, 10) > Horsetemp) {
+        for (i = 0; i < rand(1, 20) ; i++)
+            GameObjects.push(new GameObject("Horse", 167, 100, rand(canvas.width + 30, 10000), rand(50, canvas.height - 56), 'images/entities/FrameHorse.png', rand(10, 20)));
+        Horsetemp = parseInt(pastTime, 10) + rand(4, 8);
 	}
-    if(parseInt(pastTime, 10)>Lifetemp)
-    {
-        life = new GameObject("Life",55,55,rand(canvas.width+30,canvas.width+background.width),rand(50,canvas.height-56),'images/ui/Life.png',10);
-        life.draw = function(ctx)
-        {
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,this.sprite.entity_pos[0],this.sprite.entity_pos[1],50,50);
+    if (parseInt(pastTime, 10) > Lifetemp) {
+        life = new GameObject("Life", 55, 55, rand(canvas.width + 30, canvas.width + background.width), rand(50, canvas.height - 56), 'images/ui/Life.png', 10);
+        life.draw = function (ctx) {
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 0, 55, 55, this.sprite.entity_pos[0], this.sprite.entity_pos[1], 50, 50);
         }
         GameObjects.push(life);
-        Lifetemp = parseInt(pastTime, 10)+rand(30,50);
+        Lifetemp = parseInt(pastTime, 10) + rand(30, 50);
     }
 
 }
-function checkCollisions(pastTime){
-    if(TempCollision < parseInt(pastTime, 10)) {
+function checkCollisions(pastTime) {
+    if (TempCollision < parseInt(pastTime, 10)) {
         for (i = 0; i < GameObjects.length; i++) {
             if (player.collision(GameObjects[i]) && GameObjects[i].type != "Ice" && GameObjects[i].type != "Life" && GameObjects[i].type != "Ball") {
                 player.life--;
@@ -198,18 +179,15 @@ function checkCollisions(pastTime){
             }
         }
     }
-    for (i = 0; i < GameObjects.length; i++)
-    {
-        if(player.collision(GameObjects[i])&& GameObjects[i].type=="Ice")
-        {
+    for (i = 0; i < GameObjects.length; i++) {
+        if (player.collision(GameObjects[i]) && GameObjects[i].type == "Ice") {
             player.ice++;
-            GameObjects.splice(i,1);
+            GameObjects.splice(i, 1);
             break;
         }
-        if(player.collision(GameObjects[i])&& GameObjects[i].type=="Life")
-        {
-            if(player.AdditionLife())
-            GameObjects.splice(i,1);
+        if (player.collision(GameObjects[i]) && GameObjects[i].type == "Life") {
+            if (player.AdditionLife())
+                GameObjects.splice(i, 1);
             break;
         }
         if (GameObjects[i].type == "Ball") {
@@ -225,57 +203,52 @@ function checkCollisions(pastTime){
     }
 }
 function collision(objA, objB) {
-    if (objA.x+objA.width  > objB.x &&
-        objA.x             < objB.x+objB.width &&
-        objA.y+objA.height > objB.y &&
-        objA.y             < objB.y+objB.height) {
+    if (objA.x + objA.width > objB.x &&
+        objA.x < objB.x + objB.width &&
+        objA.y + objA.height > objB.y &&
+        objA.y < objB.y + objB.height) {
         return true;
     }
     else {
         return false;
     }
 }
-function RemoveEntity(){
+function RemoveEntity() {
 
-    for(i = 0;i < GameObjects.length;i++)
-    {
-        if(	GameObjects[i].sprite.entity_pos[0]<-200)
-        GameObjects.splice(i,1);
+    for (i = 0; i < GameObjects.length; i++) {
+        if (GameObjects[i].sprite.entity_pos[0] < -200)
+            GameObjects.splice(i, 1);
     }
 }
-function DrawCookies()
-{
+function DrawCookies() {
     ctx.drawImage(resources.get('images/Iceimg.png'), 0, 0, 47, 51, canvas.width / 1.1 - 78, 0, 47, 51);
-    ctx.fillText('X'+player.ice,canvas.width/1.1,0);
-    ctx.fillText('Scores:'+(pastTime*5.5).toFixed(),canvas.width/2,0);
+    ctx.fillText('X' + player.ice, canvas.width / 1.1, 0);
+    ctx.fillText('Scores:' + (pastTime * 5.5).toFixed(), canvas.width / 2, 0);
 
 }
-function DrawLife()
-{
-    switch (player.life)
-    {
+function DrawLife() {
+    switch (player.life) {
         case 1:
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,57,55,55,85,0,50,50);
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,57,55,55,40,0,45,45);
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,0,0,40,40);
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 57, 55, 55, 85, 0, 50, 50);
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 57, 55, 55, 40, 0, 45, 45);
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 0, 55, 55, 0, 0, 40, 40);
             break;
         case 2:
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,57,55,55,85,0,50,50);
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,40,0,45,45);
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,0,0,40,40);
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 57, 55, 55, 85, 0, 50, 50);
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 0, 55, 55, 40, 0, 45, 45);
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 0, 55, 55, 0, 0, 40, 40);
             break;
         case 3:
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,85,0,50,50);
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,40,0,45,45);
-            ctx.drawImage(resources.get('images/ui/Life.png'),0,0,55,55,0,0,40,40);
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 0, 55, 55, 85, 0, 50, 50);
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 0, 55, 55, 40, 0, 45, 45);
+            ctx.drawImage(resources.get('images/ui/Life.png'), 0, 0, 55, 55, 0, 0, 40, 40);
             break;
         default:
             GameOver();
             break;
     }
 }
-    function GameOver()
-    {
+function GameOver() {
         document.getElementById('game-over').style.display = 'block';
         play = false;
         GameEnd = true;
@@ -287,13 +260,11 @@ function DrawLife()
         });
     }
 
-    function reset()
-    {
+function reset() {
         document.getElementById('game-over').style.display = 'none';
         StartGame();
     }
-    function MainMenu()
-    {
+function MainMenu() {
         document.getElementById('game-over').style.display = 'none';
         document.getElementById('PauseGame').style.display = 'none';
         document.getElementById('info').style.display = 'none';
@@ -307,15 +278,43 @@ function DrawLife()
         document.getElementById('Menu').style.display = 'none';
         document.getElementById('info').style.display = 'block';
     }
-function PauseGame()
-{
+function PauseGame() {
     play = !play;
-    if(!play)
-    {
+    if (!play) {
         document.getElementById('PauseGame').style.display = 'block';
     }
-    else
-    {
+    else {
         document.getElementById('PauseGame').style.display = 'none';
     }
 }
+
+var MoveCount = 5;
+
+function playerUp() {
+    if (player.sprite.entity_pos[1] - MoveCount > 0) {
+        player.sprite.entity_pos[1] -= MoveCount;
+    }
+}
+
+function playerDown() {
+    if (player.sprite.entity_pos[1] + MoveCount + player.height < canvas.height) {
+        player.sprite.entity_pos[1] += MoveCount;
+    }
+}
+
+function holdButton(btn, action, start) {
+    var t;
+
+    var repeat = function () {
+        action();
+        t = setTimeout(repeat, start);
+}
+
+    btn.addEventListener('touchstart', function () {
+        repeat();
+    });
+
+    btn.addEventListener('touchend', function () {
+        clearTimeout(t);
+    });
+};

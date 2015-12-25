@@ -20,27 +20,58 @@
             <br/>
             <input type="image" src="images/ui/Info.png" onclick="Information()">
         </div>
-        <div  id="PauseGame">
-            <input class="back-to-menu" type="image" src="images/ui/GOBackToMenu.png" onclick="MainMenu()" >
+    <div id="PauseGame">
+        <input class="back-to-menu" type="image" src="images/ui/GOBackToMenu.png" onclick="MainMenu()">
             <h1>Game Paused</h1>
             <div style="margin-top: 30%;margin-left: 25%;position: absolute;">
-            <input type="image" src="images/ui/GORestart.png" onclick="reset()"></div>
+            <input type="image" src="images/ui/GORestart.png" onclick="reset()">
+        </div>
         </div>
         <div id="info">
             <input type="image" src="images/ui/BackToMenu.png" onclick="MainMenu()" style="float: left;">
-            <h1 style="color: #0e49f0;margin-left:45%;">Information</h1>
-            <img style="margin-top: 2%;margin-left: 7%;" width="500" height="300" src="images/InfoImage.PNG" />
-            <div id="text">
-            <p  style="font-size:24px; margin-top: 2%;font-weight:bold; color: #0e49f0;text-align:center;">
+            <h1 style="color: #0e49f0;margin-left:45%;">О игре</h1>
+            <img src="images/InfoImage.PNG" />
+            <p>
                 Данная игра была создана по мотивам мультфильма "Хранители снов". Основными врагами является служители злого духа Кромешника.
-                Для того, чтобы начать игру требуется нажать кнопку "Start". Для управления персонажем в игровой области вам необходимо перемещать мышь и нажимать на левую клавишу,чтобы
-                атаковать. Чтобы пополнить свой запас жизней требуется собирать "сердца", которые переодически появляются на карте. Также для того, чтобы ваш персонаж мог атаковать 
-                следует собирать снежинки, которые являются вашими боеприпасами. Их количество отображается в правом верхнем углу экрана. Пауза игры вызывается клавишей "Escape".
+                Для того, чтобы начать игру требуется нажать кнопку "Start". Для управления персонажем в игровой области вам необходимо перемещать мышь и нажимать на левую клавишу,чтобы атаковать. Чтобы пополнить свой запас жизней требуется собирать "сердца", которые переодически появляются на карте. Также для того, чтобы ваш персонаж мог атаковать следует собирать снежинки, которые являются вашими боеприпасами. Их количество отображается в правом верхнем углу экрана. Пауза игры вызывается клавишей "Escape".
                 Игра является бесконечной, а ваша цель заключается в том, чтобы набрать наибольшее количество очков. Приятной игры !
             </p>
             </div>
+        <div id="achivment-list">
+            <div class="empty-list">Нет не одного достижения!</div>
+            <ul class="achivment-list">
+                <li>
+                    <div class="achivment">
+                        <img src="" alt="">
         </div>
+                </li>
+                <li>
+                    <div class="achivment">
+                        <img src="" alt="">
+                </li>
+            </ul>
+        </div>
+
+    <div id="buttons-panel">
+
+        <div id="UpButton"
+             style="display:none;
+                    background-image: url('images/ui/ButtonUP.png');
+                    width:73px;
+                    height:73px;">
+        </div>
+
+        <div id="BottomButton"
+             style="display:none;
+                    margin-top:20px;
+                    background-image: url('images/ui/ButtonDown.png');
+                    width:73px;
+                    height:73px;">
+        </div>
+    </div>
     </body>
+
+<script src="scripts/jquery-2.1.4.min.js"></script>
     <script src="scripts/App.js"></script>
     <script src="scripts/resources.js"></script>
     <script src="scripts/Sprite.js"></script>
