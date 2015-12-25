@@ -7,7 +7,7 @@ function Player(width,height,x,y,image,life)
 	this.y = y;
     this.life = life||0;
     this.ice = 0;
-	this.sprite = new Sprite(this.image,[this.x,this.y],[0, 0], [this.width, this.height], 10, [0, 1, 2, 1, 0]);
+	this.sprite = new Sprite(this.image,[this.x,this.y],[0, 0], [this.width, this.height], 10, [0, 1, 2, 1]);
     this.collision = function collision(objA) {
         if (objA.sprite.entity_pos[0]+objA.width  > this.sprite.entity_pos[0] &&
             objA.sprite.entity_pos[0]             < this.sprite.entity_pos[0]+this.width &&

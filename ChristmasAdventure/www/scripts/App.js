@@ -281,7 +281,7 @@ function PauseGame() {
     }
 }
 
-document.addEventListener("touchmove", function (event) {
+document.getElementById("swipe").addEventListener("touchmove", function (event) {
     if (play) {
         var touches = event.changedTouches;
 
