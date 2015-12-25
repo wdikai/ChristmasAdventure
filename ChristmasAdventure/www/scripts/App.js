@@ -311,7 +311,7 @@ function RemoveEntity() {
 function DrawCookies() {
     ctx.drawImage(resources.get('images/Iceimg.png'), 0, 0, 47, 51, canvas.width / 1.1 - 78, 0, 47, 51);
     ctx.fillText('X' + player.ice, canvas.width / 1.1, 0);
-    scores = (pastTime * 5.5).toFixed() + additionScores;
+    scores = (pastTime * 5.5 + additionScores).toFixed();
     ctx.fillText('Scores:' + scores, canvas.width / 2, 0);
 
 }
