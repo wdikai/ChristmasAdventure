@@ -254,13 +254,21 @@ function DrawLife() {
 }
 function GameOver() {
     $("canvas").hide();
-        document.getElementById('game-over').style.display = 'block';
-        play = false;
-        GameEnd = true;
-       
-        document.getElementById('PauseGame').style.display = 'none';
-        var TimeScore = document.getElementById('time-score');
-        TimeScore.innerHTML = '<h1>Scores: ' + (pastTime * 5.5).toFixed() + '</h1>';
+    document.getElementById('game-over').style.display = 'block';
+    $("#control-block").hide();
+    play = false;
+    GameEnd = true;
+   
+    document.getElementById('PauseGame').style.display = 'none';
+    var TimeScore = document.getElementById('time-score');
+    var score = (pastTime * 5.5).toFixed();
+    TimeScore.innerHTML = '<h1>Scores: ' + score + '</h1>';
+    var lastScore = loadScore();
+    if(lastScore < score){
+        saveScore(score);
+    }
+
+    $("#record").text(loadScore());
     document.getElementById('play-again').addEventListener('click', function () {
             reset();
         });

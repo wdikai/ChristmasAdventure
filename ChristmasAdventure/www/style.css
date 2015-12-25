@@ -72,6 +72,12 @@ img#GameOverImg {
     border-bottom: 1px solid #0000ff;
     box-shadow: 0px 1px white;
 }
+
+#Menu p{
+    font-size: 5vh;
+    color: #0000ff;
+    text-shadow: 0px 0px 5px white;
+}
 #PauseGame{
     margin: auto;
     width: 100%;
