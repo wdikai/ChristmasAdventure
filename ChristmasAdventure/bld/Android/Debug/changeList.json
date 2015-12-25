@@ -122,7 +122,8 @@
     "config.xml",
     "www\\scripts\\app.js",
     "www\\images\\entities\\Demon.png",
-    "www\\scripts\\something.js"
+    "www\\scripts\\something.js",
+    "www\\sounds\\monster.mp3"
   ],
   "deletedFilesIos": [
     "plugins\\cordova-plugin-file\\www\\DirectoryEntry.js",
@@ -293,7 +294,8 @@
   ],
   "changedFiles": [
     "www\\scripts\\app.js",
-    "www\\scripts\\something.js"
+    "www\\scripts\\something.js",
+    "www\\sounds\\monster.mp3"
   ],
   "deletedFiles": [],
   "addedPlugins": [],
