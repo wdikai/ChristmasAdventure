@@ -270,12 +270,6 @@ function MainMenu() {
         document.getElementById('Menu').style.display = 'block';
         play = false;
     }
-    function Information() {
-        document.getElementById('game-over').style.display = 'none';
-        document.getElementById('PauseGame').style.display = 'none';
-        document.getElementById('Menu').style.display = 'none';
-        document.getElementById('info').style.display = 'block';
-    }
 
 function PauseGame() {
     play = !play;
