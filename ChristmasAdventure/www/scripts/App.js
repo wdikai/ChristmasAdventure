@@ -18,12 +18,14 @@ var mainSound = SoundManager.Sound("Main", "sounds/help.mp3", true);
 var windSound = SoundManager.Sound("Wind", "sounds/wind.mp3", true);
 var snowSound = SoundManager.Sound("Snow", "sounds/snow.mp3");
 var horseSound = SoundManager.Sound("Horse", "sounds/horse.mp3");
+var monsterSound = SoundManager.Sound("Monster", "sounds/monster.mp3");
 var loseSound = SoundManager.Sound("Lose", "sounds/lose.mp3");
 SoundManager.addSound(mainSound);
 SoundManager.addSound(windSound);
 SoundManager.addSound(snowSound);
 SoundManager.addSound(horseSound);
 SoundManager.addSound(loseSound);
+SoundManager.addSound(monsterSound);
 SoundManager.play("Main");
 
 
@@ -193,8 +195,13 @@ function checkCollisions(pastTime) {
     if (TempCollision < parseInt(pastTime, 10)) {
         for (i = 0; i < GameObjects.length; i++) {
             if (player.collision(GameObjects[i]) && GameObjects[i].type != "Ice" && GameObjects[i].type != "Life" && GameObjects[i].type != "Ball") {
-                if(GameObjects[i].type === "Horse" && play && !GameEnd){
-                    SoundManager.play("Horse");
+                if (play && !GameEnd) {
+                    if (GameObjects[i].type === "Horse") {
+                        SoundManager.play("Horse");
+                    }
+                    if (GameObjects[i].type === "Monster") {
+                        SoundManager.play("Monster");
+                    }
                 }
                 player.life--;
                 TempCollision = parseInt(pastTime, 10) + 3;
