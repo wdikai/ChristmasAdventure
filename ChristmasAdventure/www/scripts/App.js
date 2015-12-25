@@ -16,8 +16,8 @@ canvas.height = document.documentElement.scrollHeight;
 
 function StartGame() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-document.getElementById('Menu').style.display = 'none';
-document.getElementById('PauseGame').style.display = 'none';
+    document.getElementById('Menu').style.display = 'none';
+    document.getElementById('PauseGame').style.display = 'none';
     $("#canvas").show();
 init();
 }
@@ -53,14 +53,16 @@ function init() {
     ctx.textBaseline = 'top';
     ctx.fillStyle = '#ccc';
     resources.load(
-        ['images/backgrounds/Background.jpg',
-         'images/entities/Player.png',
-         'images/entities/Ice.png', 
-         'images/entities/FrameHorse.png', 
-         'images/entities/Balls.png', 
-         'images/entities/Monster.png', 
-         'images/ui/Life.png', 
-         'images/Iceimg.png']);
+        [
+            'images/backgrounds/Background.jpg',
+            'images/entities/Player.png',
+            'images/entities/Ice.png', 
+            'images/entities/FrameHorse.png', 
+            'images/entities/Balls.png', 
+            'images/entities/Monster.png', 
+            'images/ui/Life.png', 
+            'images/Iceimg.png'
+        ]);
 	resources.onReady(main);
 	}
 var lastTime;
@@ -116,7 +118,7 @@ function rand(min, max) {
 	return rand;
 }
 
-document.getElementById("shot").addEventListener("tap", function (e) {
+$("shot").clic(function (e) {
     if (pastTime > 1 && player.ice > 0 && GameEnd == false && e.offsetX > canvas.width / 2) {
         Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height, 'images/entities/Balls.png', 10);
         Ball.collision = player.collision;
