@@ -35,8 +35,11 @@ SoundManager.addSound(loseSound);
 SoundManager.addSound(monsterSound);
 SoundManager.addSound(demonSound);
 SoundManager.play("Main");
+var playerFile;
+var bulletFile;
+var cookieFile;
 
-function StartGame() {
+function StartGame(name) {
     SoundManager.stop("Main");
     SoundManager.play("Wind");
     hourseCounter = AchievSystem.loadKillsData("Hourse");
@@ -49,6 +52,25 @@ function StartGame() {
     document.getElementById('PauseGame').style.display = 'none';
     document.getElementById('control-block').style.display = 'block';
     $("#canvas").show();
+    switch (name) {
+        case "jack":
+            playerFile = 'images/entities/Player.png';
+            bulletFile = 'images/entities/Balls.png';
+            cookieFile = 'images/entities/Ice.png';
+            break;
+        case "sand":
+            playerFile = 'images/entities/Sandman.png';
+            bulletFile = 'images/entities/SandBalls.png';
+            cookieFile = 'images/entities/Sand.png';
+            break;
+        case "fairy":
+            playerFile = 'images/entities/Fairy.png';
+            bulletFile = 'images/entities/Monets.png';
+            cookieFile = 'images/entities/Teeth.png';
+            break;
+        default:
+
+    }
 init();
 }
 function init() {
@@ -68,7 +90,7 @@ function init() {
 	}
 
 	lastTime = Date.now();
-	player = new Player(100, 100, 100, canvas.height / 2, 'images/entities/Player.png', 3);
+	player = new Player(100, 100, 100, canvas.height / 2, playerFile, 3);
 	GameEnd = false;
 	GameObjects = [];
 	pastTime = 0;
@@ -86,10 +108,10 @@ function init() {
     resources.load(
         [
             backgroundFile,
-            'images/entities/Player.png',
-            'images/entities/Ice.png', 
+            playerFile,
+            cookieFile,
+            bulletFile,
             'images/entities/FrameHorse.png', 
-            'images/entities/Balls.png', 
             'images/entities/Monster.png', 
             'images/entities/Demon.png',
             'images/ui/Life.png', 
@@ -127,6 +149,7 @@ function main() {
     }
     requestAnimFrame(main);
 };
+
 function render(ctx) {
     ctx.drawImage(resources.get(backgroundFile), background.x, background.y, background.width, background.height);
     ctx.drawImage(resources.get(backgroundFile), background2.x, background2.y, background2.width, background2.height);
@@ -172,7 +195,7 @@ function rand(min, max) {
 
 document.getElementById("shot").addEventListener("touchstart", function (e) {
     if (pastTime > 1 && player.ice > 0 && GameEnd == false) {
-        Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height / 2, 'images/entities/Balls.png', 10);
+        Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height / 2, bulletFile, 10);
         Ball.collision = player.collision;
         GameObjects.push(Ball);
         player.ice--;
@@ -200,7 +223,7 @@ function DrawEntity(ctx) {
 
 function AdditionEntities(pastTime) {
     if (pastTime > Icetemp) {
-	    GameObjects.push(new GameObject("Ice", 48, 48, rand(canvas.width + 30, canvas.width + background.width), rand(50, canvas.height - 48), 'images/entities/Ice.png', rand(8, 15)));
+	    GameObjects.push(new GameObject("Ice", 48, 48, rand(canvas.width + 30, canvas.width + background.width), rand(50, canvas.height - 48), cookieFile, rand(8, 15)));
         Icetemp = pastTime + 1;
 	}
     if (parseInt(pastTime, 10) > ghostTemp) {
