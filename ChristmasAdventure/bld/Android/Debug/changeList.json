@@ -164,7 +164,7 @@
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
   "changedFiles": [
-    "www\\style.css"
+    "www\\scripts\\App.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],

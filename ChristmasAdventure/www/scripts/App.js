@@ -121,9 +121,9 @@ function rand(min, max) {
 	return rand;
 }
 
-document.getElementById("shot").addEventListener("tapped", function (e) {
+document.getElementById("shot").addEventListener("touchstart", function (e) {
     if (pastTime > 1 && player.ice > 0 && GameEnd == false) {
-        Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height, 'images/entities/Balls.png', 10);
+        Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height / 2, 'images/entities/Balls.png', 10);
         Ball.collision = player.collision;
         GameObjects.push(Ball);
         player.ice--;
