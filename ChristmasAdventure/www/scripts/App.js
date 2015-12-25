@@ -16,10 +16,10 @@ canvas.height = document.documentElement.scrollHeight;
 
 function StartGame() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    document.getElementById('Menu').style.display = 'none';
-    document.getElementById('PauseGame').style.display = 'none';
+document.getElementById('Menu').style.display = 'none';
+document.getElementById('PauseGame').style.display = 'none';
     $("#canvas").show();
-    init();
+init();
 }
 function init() {
     play = true;
@@ -115,15 +115,16 @@ function rand(min, max) {
 	rand = Math.round(rand);
 	return rand;
 }
-document.onclick = function (e) {
+
+document.getElementById("shot").addEventListener("tap", function (e) {
     if (pastTime > 1 && player.ice > 0 && GameEnd == false && e.offsetX > canvas.width / 2) {
         Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height, 'images/entities/Balls.png', 10);
         Ball.collision = player.collision;
         GameObjects.push(Ball);
         player.ice--;
     }
+});
 
-}
 document.onkeydown = function (e) {
     var keyCode;
     if (e) {
@@ -248,13 +249,13 @@ function DrawLife() {
 }
 function GameOver() {
     $("canvas").hide();
-    document.getElementById('game-over').style.display = 'block';
-    play = false;
-    GameEnd = true;
-   
-    document.getElementById('PauseGame').style.display = 'none';
-    var TimeScore = document.getElementById('time-score');
-    TimeScore.innerHTML = '<h1>Scores: ' + (pastTime * 5.5).toFixed() + '</h1>';
+        document.getElementById('game-over').style.display = 'block';
+        play = false;
+        GameEnd = true;
+       
+        document.getElementById('PauseGame').style.display = 'none';
+        var TimeScore = document.getElementById('time-score');
+        TimeScore.innerHTML = '<h1>Scores: ' + (pastTime * 5.5).toFixed() + '</h1>';
     document.getElementById('play-again').addEventListener('click', function () {
             reset();
         });
