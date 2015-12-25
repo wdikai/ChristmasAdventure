@@ -19,17 +19,17 @@
             <div class="menu">
                 <div class="button" onclick="StartGame()">Играть</div> 
                 <br/>
-                <div class="button" onclick="Information()">Достижения</div> 
+                <div class="button" id="achivement-button">Достижения</div> 
                 <br/>
-                <div class="button" onclick="Information()">Об игре</div> 
+                <div class="button" id="info-button">Об игре</div> 
             </div>
         </div>
-    <div id="PauseGame">
-        <input class="back-to-menu" type="image" src="images/ui/GOBackToMenu.png" onclick="MainMenu()">
-            <h1>Game Paused</h1>
-            <div style="margin-top: 30%;margin-left: 25%;position: absolute;">
-            <input type="image" src="images/ui/GORestart.png" onclick="reset()">
-        </div>
+        <div id="PauseGame">
+            <input class="back-to-menu" type="image" src="images/ui/GOBackToMenu.png" onclick="MainMenu()">
+                <h1>Game Paused</h1>
+                <div style="margin-top: 30%;margin-left: 25%;position: absolute;">
+                <input type="image" src="images/ui/GORestart.png" onclick="reset()">
+            </div>
         </div>
         <div id="info">
             <input type="image" src="images/ui/BackToMenu.png" onclick="MainMenu()" style="float: left;">
@@ -57,11 +57,15 @@
         </div>
     </body>
 
-<script src="scripts/jquery-2.1.4.min.js"></script>
-    <script src="scripts/App.js"></script>
+    <script src="scripts/jquery-2.1.4.min.js"></script>
+
     <script src="scripts/resources.js"></script>
     <script src="scripts/Sprite.js"></script>
     <script src="scripts/GameObject.js"></script>
     <script src="scripts/Something.js"></script>
     <script src="scripts/Panel.js"></script>
+
+    <script src="scripts/App.js"></script>
+
+    <script src="scripts/menu.js"></script>
 </html>
