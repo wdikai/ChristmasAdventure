@@ -164,9 +164,7 @@
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
   "changedFiles": [
-    "www\\index.html",
-    "www\\style.css",
-    "www\\scripts\\menu.js"
+    "www\\scripts\\App.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],

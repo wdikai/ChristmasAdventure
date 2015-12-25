@@ -289,9 +289,10 @@ function PauseGame() {
 
 document.addEventListener("touchmove", function (event) {
     if (play) {
-        if (event.pageY < canvas.height - player.height / 3 && event.pageY > 50) {
-            player.sprite.entity_pos[0] = event.pageX - player.width / 2;
-            player.sprite.entity_pos[1] = event.pageY - player.height / 2;
+        var touches = event.changedTouches;
+
+        if (touches[0].pageY < canvas.height - player.height / 3 && touches[0].pageY > 50) {
+            player.sprite.entity_pos[1] = touches[0].pageY - player.height / 2;
     }
 }
     }
