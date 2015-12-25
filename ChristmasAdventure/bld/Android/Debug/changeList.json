@@ -117,7 +117,8 @@
     "www\\scripts\\App.js",
     "www\\images\\ui\\ButtonDown.png",
     "www\\images\\ui\\ButtonUP.png",
-    "www\\scripts\\jquery-2.1.4.min.js"
+    "www\\scripts\\jquery-2.1.4.min.js",
+    "www\\scripts\\menu.js"
   ],
   "deletedFilesIos": [
     "www\\^A78D0C2F3C670350969AF0EA6E8D766CB86F1913838D23BFBF^pimgpsh_thumbnail_win_distr.jpg",
@@ -162,7 +163,11 @@
   ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [],
+  "changedFiles": [
+    "www\\index.html",
+    "www\\style.css",
+    "www\\scripts\\menu.js"
+  ],
   "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []

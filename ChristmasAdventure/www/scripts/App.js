@@ -17,16 +17,12 @@ function StartGame() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 document.getElementById('Menu').style.display = 'none';
 document.getElementById('PauseGame').style.display = 'none';
-    document.getElementById('UpButton').style.display = 'block';
-    document.getElementById('BottomButton').style.display = 'block';
 document.body.appendChild(canvas);
 init();
 }
 function init() {
     play = true;
     light = true;
-    holdButton(document.getElementById("UpButton"), playerUp, 10);
-    holdButton(document.getElementById("BottomButton"), playerDown, 10);
     background = new GameObject("Background", 1366, canvas.height, 0, 0, 'images/backgrounds/Background.jpg', 7);
     background.update = function () {
         if (background.x < -background.width)
@@ -253,8 +249,7 @@ function GameOver() {
         document.getElementById('game-over').style.display = 'block';
         play = false;
         GameEnd = true;
-        document.getElementById('UpButton').style.display = 'none';
-        document.getElementById('BottomButton').style.display = 'none';
+       
         document.getElementById('PauseGame').style.display = 'none';
         var TimeScore = document.getElementById('time-score');
         TimeScore.innerHTML = '<h1>Scores: ' + (pastTime * 5.5).toFixed() + '</h1>';
