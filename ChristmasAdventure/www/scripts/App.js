@@ -71,7 +71,7 @@ function StartGame(name) {
         default:
 
     }
-init();
+    init();
 }
 function init() {
     play = true;

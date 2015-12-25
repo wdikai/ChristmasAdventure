@@ -356,17 +356,44 @@
     "plugins\\cordova-plugin-dialogs\\LICENSE",
     "plugins\\cordova-plugin-dialogs\\src\\wp\\NotificationBox.xaml",
     "plugins\\cordova-plugin-dialogs\\NOTICE",
-    "plugins\\cordova-plugin-dialogs\\src\\ubuntu\\notification.h"
+    "plugins\\cordova-plugin-dialogs\\src\\ubuntu\\notification.h",
+    "plugins\\cordova-plugin-fullscreen\\plugin.xml",
+    "plugins\\cordova-plugin-fullscreen\\example\\www\\index.html",
+    "plugins\\cordova-plugin-fullscreen\\LICENSE",
+    "plugins\\cordova-plugin-fullscreen\\package.json",
+    "plugins\\cordova-plugin-fullscreen\\example\\README.md",
+    "plugins\\cordova-plugin-fullscreen\\src\\android\\com\\mesmotronic\\plugins\\FullScreenPlugin.java",
+    "plugins\\cordova-plugin-fullscreen\\example\\hooks\\README.md",
+    "plugins\\cordova-plugin-fullscreen\\www\\AndroidFullScreen.js",
+    "plugins\\cordova-plugin-fullscreen\\example\\config.xml",
+    "plugins\\cordova-plugin-fullscreen\\README.md"
   ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [
     "cordova-plugin-media",
-    "cordova-plugin-dialogs"
+    "cordova-plugin-dialogs",
+    "cordova-plugin-fullscreen"
   ],
   "changedFiles": [
-    "www\\scripts\\app.js"
+    "www\\scripts\\app.js",
+    "www\\style.css",
+    "config.xml",
+    "plugins\\fetch.json"
   ],
-  "deletedFiles": [],
+  "deletedFiles": [
+    "plugins\\cordova-plugin-fullscreen\\plugin.xml",
+    "plugins\\cordova-plugin-fullscreen\\example\\www\\index.html",
+    "plugins\\cordova-plugin-fullscreen\\LICENSE",
+    "plugins\\cordova-plugin-fullscreen\\package.json",
+    "plugins\\cordova-plugin-fullscreen\\example\\README.md",
+    "plugins\\cordova-plugin-fullscreen\\src\\android\\com\\mesmotronic\\plugins\\FullScreenPlugin.java",
+    "plugins\\cordova-plugin-fullscreen\\example\\hooks\\README.md",
+    "plugins\\cordova-plugin-fullscreen\\www\\AndroidFullScreen.js",
+    "plugins\\cordova-plugin-fullscreen\\example\\config.xml",
+    "plugins\\cordova-plugin-fullscreen\\README.md"
+  ],
   "addedPlugins": [],
-  "deletedPlugins": []
+  "deletedPlugins": [
+    "cordova-plugin-fullscreen"
+  ]
 }
