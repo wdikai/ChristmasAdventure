@@ -16,6 +16,9 @@ canvas.height = document.documentElement.scrollHeight;
 
 var hourseCounter = 0;
 var gostCounter = 0;
+var demonCounter = 0;
+var scores = 0;
+var additionScores = 0;
 var backgroundFile = getBackground();
 var mainSound = SoundManager.Sound("Main", "sounds/help.mp3", true);
 var windSound = SoundManager.Sound("Wind", "sounds/wind.mp3", true);
@@ -119,12 +122,15 @@ function init() {
 
 function getBackground() {
     var result;
-    var number = rand(1, 2);
+    var number = rand(1, 3);
     if (number == 1) {
         result = 'images/backgrounds/Background.jpg';
     }
     if (number == 2) {
         result = 'images/backgrounds/Background1.jpg';
+    }
+    if (number == 3) {
+        result = 'images/backgrounds/Background2.jpg';
     }
     return result;
 }
@@ -286,9 +292,15 @@ function checkCollisions(pastTime) {
                     switch(GameObjects[j].type){
                         case "Horse":
                             hourseCounter++;
+                            additionScores += 20;
                             break;
                         case "Monster":
                             gostCounter++;
+                            additionScores += 40;
+                            break
+                        case "Demon":
+                            demonCounter++;
+                            additionScores += 30;
                             break
                     }
 
@@ -322,7 +334,8 @@ function RemoveEntity() {
 function DrawCookies() {
     ctx.drawImage(resources.get('images/Iceimg.png'), 0, 0, 47, 51, canvas.width / 1.1 - 78, 0, 47, 51);
     ctx.fillText('X' + player.ice, canvas.width / 1.1, 0);
-    ctx.fillText('Scores:' + (pastTime * 5.5).toFixed(), canvas.width / 2, 0);
+    scores = (pastTime * 5.5).toFixed() + additionScores;
+    ctx.fillText('Scores:' + scores, canvas.width / 2, 0);
 
 }
 function DrawLife() {
@@ -380,16 +393,6 @@ function GameOver() {
             AchievSystem.emit("MGK");
         }
     }
-
-    window.plugin.notification.local.add({
-        id: '0001',
-        at: new Date,
-        text: 'hello',
-        title: 'title',
-        badge: 1,
-        autoCancel: true,
-        ongoing: true
-    });
 
     $("#record").text(loadScore());
     document.getElementById('play-again').addEventListener('click', function () {
