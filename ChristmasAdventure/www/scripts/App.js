@@ -374,8 +374,8 @@ function GameOver() {
     var TimeScore = document.getElementById('time-score');
     TimeScore.innerHTML = '<h1>Результат: ' + scores + '</h1>';
     var lastScore = parseInt(loadScore());
-    if (lastScore < score) {
-        saveScore(score);
+    if (lastScore < scores) {
+        saveScore(scores);
     }
 
     AchievSystem.saveKillsData("Hourse", hourseCounter);
@@ -432,7 +432,7 @@ document.getElementById("swipe").addEventListener("touchmove", function (event) 
 
         if (touches[0].pageY < canvas.height - player.height / 3 && touches[0].pageY > 50) {
             player.sprite.entity_pos[1] = touches[0].pageY - player.height / 2;
+        }
     }
-}
     }
 );
