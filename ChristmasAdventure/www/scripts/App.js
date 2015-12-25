@@ -93,6 +93,8 @@ function init() {
 	player = new Player(100, 100, 100, canvas.height / 2, playerFile, 3);
 	GameEnd = false;
 	GameObjects = [];
+    scores = 0;
+    additionScores = 0;
 	pastTime = 0;
 	Icetemp = 0;
 	Horsetemp = 0;
