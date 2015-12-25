@@ -7,15 +7,17 @@
     <body>
         <div id="game-over">
             <input type="image" src="images/ui/GOBackToMenu.png" id="back-to-menu" onclick="MainMenu()">
-            <img id="GameOverImg" src="images/ui/Game_Over.png" height="200" width="300">
-            <input type="image" src="images/ui/GORestart.png" id="play-again" onclick="reset()">
-            <div>
-                <h1 id="time-score">x1</h1>
+            <img id="GameOverImg" src="images/ui/Game_Over.png" height="160" width="300">
+            <br/>
+            <div id="time-score">
+                <h1>x1</h1>
             </div>
-            
+            <br/>
+            <input type="image" src="images/ui/GORestart.png" id="play-again" onclick="reset()">
         </div>
-        <div id ="Menu">
-            <input id="First" type="image" src="images/ui/Start.png" onclick="StartGame()">
+        <div id="Menu">
+            <input id="First" type="image" src="images/ui/Start.png" onclick=" StartGame() ">
+            <br/>
             <input type="image" src="images/ui/Info.png" onclick="Information()">
         </div>
         <div  id="PauseGame">

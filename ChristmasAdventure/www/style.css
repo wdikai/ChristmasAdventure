@@ -7,25 +7,6 @@ canvas {
     cursor:none;
 }
 
-#back-to-menu{
-    position:absolute;
-}
-
-.back-to-menu{
-    float: left;
-}
-
-#play-again{
-    position:absolute;
-    margin-top:18%;
-    margin-left:38%;
-}
-
-#time-score{
-    margin-left: 40%;
-    margin-top:15%
-}
-
 #PauseGame h1{
     color: black;
     margin-left:40%
@@ -35,7 +16,7 @@ canvas {
     margin: auto;
     width: 100%;
     height: 100%;
-    position: absolute;
+    text-align: center;
     background-image: url(images/backgrounds/GameEnd.png);
     top: 0;
     left: 0;
@@ -45,23 +26,22 @@ canvas {
     display: none;
 }
 
+#back-to-menu {
+    position: fixed;
+    left: 0px;
+}
+
 img#GameOverImg {
-    position:absolute;
-    margin-left:40%;
+    margin-top: 5%;
 }
 
 #First{
-
-   margin-left: 40%;
-   margin-top: 10%;
-
-}
-#Menu input{
-    margin-left: 40%;
+    margin-top: 10%;
 }
 #Menu{
     width:100%;
     height:100%;
+    text-align: center;
     background-image: url(images/backgrounds/BG_Menu.png);
 }
 #PauseGame{

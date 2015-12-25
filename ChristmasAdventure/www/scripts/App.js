@@ -280,7 +280,8 @@ function DrawLife()
         play = false;
         GameEnd = true;
         document.getElementById('PauseGame').style.display = 'none';
-        TimeScore.innerHTML = 'Scores:' + (pastTime * 5.5).toFixed();
+        var TimeScore = document.getElementById('time-score');
+        TimeScore.innerHTML = '<h1>Scores: ' + (pastTime * 5.5).toFixed() + '</h1>';
         document.getElementById('play-again').addEventListener('click', function() {
             reset();
         });
@@ -296,7 +297,7 @@ function DrawLife()
         document.getElementById('game-over').style.display = 'none';
         document.getElementById('PauseGame').style.display = 'none';
         document.getElementById('info').style.display = 'none';
-        //canvas.style.display = 'none';
+        canvas.style.display = 'none';
         document.getElementById('Menu').style.display = 'block';
         play = false;
     }
