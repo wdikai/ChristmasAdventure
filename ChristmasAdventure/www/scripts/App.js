@@ -15,6 +15,8 @@ canvas.width = document.documentElement.scrollWidth;
 canvas.height = document.documentElement.scrollHeight;
 
 function StartGame() {
+    canvas.width = document.documentElement.scrollWidth;
+    canvas.height = document.documentElement.scrollHeight;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     document.getElementById('Menu').style.display = 'none';
     document.getElementById('PauseGame').style.display = 'none';
@@ -252,15 +254,15 @@ function DrawLife() {
 }
 function GameOver() {
     $("canvas").hide();
-        document.getElementById('game-over').style.display = 'block';
-        play = false;
-        GameEnd = true;
-        document.getElementById('control-block').style.display = 'none';
-        document.getElementById('PauseGame').style.display = 'none';
-        var TimeScore = document.getElementById('time-score');
+    document.getElementById('game-over').style.display = 'block';
+    play = false;
+    GameEnd = true;
+    document.getElementById('control-block').style.display = 'none';
+    document.getElementById('PauseGame').style.display = 'none';
+    var TimeScore = document.getElementById('time-score');
     var score = (pastTime * 5.5).toFixed();
     TimeScore.innerHTML = '<h1>Результат: ' + score + '</h1>';
-    var lastScore = loadScore();
+    var lastScore = parseInt(loadScore());
     if(lastScore < score){
         saveScore(score);
     }
@@ -276,10 +278,11 @@ function reset() {
         StartGame();
     }
 function MainMenu() {
-        document.getElementById('game-over').style.display = 'none';
-        document.getElementById('PauseGame').style.display = 'none';
-        document.getElementById('info').style.display = 'none';
-        document.getElementById('Menu').style.display = 'block';
+        $('#game-over').hide();
+        $('#PauseGame').hide();
+        $('#info').hide();
+        $('#achivment-list').hide();
+        $('#Menu').show();
         play = false;
     }
 

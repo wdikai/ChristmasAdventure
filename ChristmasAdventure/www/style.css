@@ -146,6 +146,12 @@ input[type="checkbox"]:checked + span {
 
 
 #achivment-list{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
     display: none;
 }
 
@@ -165,7 +171,9 @@ input[type="checkbox"]:checked + span {
 } 
 
 .empty-list {
-    height: 100px; text-align: center;
+    height: 100px; 
+    text-align: center;
+    margin-top: calc(50vh - 15px);
     font-size: 30px;
     font-family: "Comic Sans MS";
 } 
