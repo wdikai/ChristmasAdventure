@@ -18,8 +18,6 @@ function StartGame() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     document.getElementById('Menu').style.display = 'none';
     document.getElementById('PauseGame').style.display = 'none';
-    document.getElementById('shot').style.display = 'block';
-    document.getElementById('swipe').style.display = 'block';
     document.getElementById('control-block').style.display = 'block';
     $("#canvas").show();
 init();
@@ -257,10 +255,10 @@ function GameOver() {
         document.getElementById('game-over').style.display = 'block';
         play = false;
         GameEnd = true;
-       
+        document.getElementById('control-block').style.display = 'none';
         document.getElementById('PauseGame').style.display = 'none';
         var TimeScore = document.getElementById('time-score');
-        TimeScore.innerHTML = '<h1>Scores: ' + (pastTime * 5.5).toFixed() + '</h1>';
+        TimeScore.innerHTML = '<h1>?????????: ' + (pastTime * 5.5).toFixed() + '</h1>';
     document.getElementById('play-again').addEventListener('click', function () {
             reset();
         });
@@ -274,7 +272,6 @@ function MainMenu() {
         document.getElementById('game-over').style.display = 'none';
         document.getElementById('PauseGame').style.display = 'none';
         document.getElementById('info').style.display = 'none';
-        //canvas.style.display = 'none';
         document.getElementById('Menu').style.display = 'block';
         play = false;
     }

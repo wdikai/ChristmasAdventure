@@ -25,7 +25,7 @@ function GameObject(type,width,height,x,y,image,speed,spritespeed)
         {
                 var increase = Math.PI/100;
                 this.sprite.entity_pos[0] = this.sprite.entity_pos[0] - this.speed;
-                this.sprite.entity_pos[1] = Math.asin(this.counter)*120+this.y;
+                this.sprite.entity_pos[1] = Math.sin(this.counter)*120+this.y;
                 this.counter += 0.1;
         }
         if (this.type != "Ice" && this.type != "Monster"){
