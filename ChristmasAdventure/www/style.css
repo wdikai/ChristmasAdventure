@@ -164,3 +164,21 @@ input[type="checkbox"]:checked + span {
 .achivment-list {
     display: none;
 } 
+
+#control-block {
+    display: none;
+}
+
+#swipe {
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+}
+
+#shot {
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    right: 0;
+}
