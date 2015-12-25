@@ -14,11 +14,15 @@ var ctx = canvas.getContext('2d');
 canvas.width = document.documentElement.scrollWidth;
 canvas.height = document.documentElement.scrollHeight;
 
+var hourseCounter = 0;
+var gostCounter = 0;
+
 var mainSound = SoundManager.Sound("Main", "sounds/help.mp3", true);
 var windSound = SoundManager.Sound("Wind", "sounds/wind.mp3", true);
 var snowSound = SoundManager.Sound("Snow", "sounds/snow.mp3");
 var horseSound = SoundManager.Sound("Horse", "sounds/horse.mp3");
 var monsterSound = SoundManager.Sound("Monster", "sounds/monster.mp3");
+var demonSound = SoundManager.Sound("Demon", "sounds/demon.mp3");
 var loseSound = SoundManager.Sound("Lose", "sounds/lose.mp3");
 SoundManager.addSound(mainSound);
 SoundManager.addSound(windSound);
@@ -26,12 +30,15 @@ SoundManager.addSound(snowSound);
 SoundManager.addSound(horseSound);
 SoundManager.addSound(loseSound);
 SoundManager.addSound(monsterSound);
+SoundManager.addSound(demonSound);
 SoundManager.play("Main");
-
 
 function StartGame() {
     SoundManager.stop("Main");
     SoundManager.play("Wind");
+    hourseCounter = AchievSystem.loadKillsData("Hourse");
+    gostCounter = AchievSystem.loadKillsData("Ghost");
+
     canvas.width = document.documentElement.scrollWidth;
     canvas.height = document.documentElement.scrollHeight;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -39,7 +46,7 @@ function StartGame() {
     document.getElementById('PauseGame').style.display = 'none';
     document.getElementById('control-block').style.display = 'block';
     $("#canvas").show();
-    init();
+init();
 }
 function init() {
     play = true;
@@ -47,29 +54,29 @@ function init() {
     background = new GameObject("Background", 1366, canvas.height, 0, 0, 'images/backgrounds/Background.jpg', 7);
     background.update = function () {
         if (background.x < -background.width)
-            background.x = background2.x + background2.width;
-        background.x -= background.speed;
-    }
+		background.x = background2.x + background2.width;
+		background.x -= background.speed;
+	}
     background2 = new GameObject("Background", background.width, canvas.height, background.width, 0, 'images/backgrounds/Background.jpg', background.speed);
     background2.update = function () {
         if (background2.x < -background.width)
-            background2.x = background.x + background.width;
-        background2.x -= background2.speed;
-    }
+		background2.x = background.x + background.width;
+		background2.x -= background2.speed;
+	}
 
-    lastTime = Date.now();
-    player = new Player(100, 100, 100, canvas.height / 2, 'images/entities/Player.png', 3);
-    GameEnd = false;
-    GameObjects = [];
-    pastTime = 0;
-    Icetemp = 0;
-    Horsetemp = 0;
+	lastTime = Date.now();
+	player = new Player(100, 100, 100, canvas.height / 2, 'images/entities/Player.png', 3);
+	GameEnd = false;
+	GameObjects = [];
+	pastTime = 0;
+	Icetemp = 0;
+	Horsetemp = 0;
     ghostTemp = 0;
     demonTemp = 0;
     Lifetemp = 0;
-    TempCollision = 0;
+	TempCollision = 0;
     panel = new Panel();
-    ctx.font = 'bold 50px courier';
+	ctx.font = 'bold 50px courier';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
     ctx.fillStyle = '#ccc';
@@ -77,28 +84,28 @@ function init() {
         [
             'images/backgrounds/Background.jpg',
             'images/entities/Player.png',
-            'images/entities/Ice.png',
-            'images/entities/FrameHorse.png',
-            'images/entities/Balls.png',
-            'images/entities/Monster.png',
+            'images/entities/Ice.png', 
+            'images/entities/FrameHorse.png', 
+            'images/entities/Balls.png', 
+            'images/entities/Monster.png', 
             'images/entities/Demon.png',
-            'images/ui/Life.png',
+            'images/ui/Life.png', 
             'images/Iceimg.png'
         ]);
-    resources.onReady(main);
-}
+	resources.onReady(main);
+	}
 var lastTime;
 function main() {
     if (play == true && GameEnd == false) {
-        var now = Date.now();
-        var dt = (now - lastTime) / 1000.0;
+    var now = Date.now();
+    var dt = (now - lastTime) / 1000.0;
         pastTime += dt;
-        AdditionEntities(pastTime);
-        update(dt);
-        render(ctx);
-        checkCollisions(pastTime);
-        RemoveEntity();
-        lastTime = now;
+	AdditionEntities(pastTime);
+    update(dt);
+    render(ctx);
+    checkCollisions(pastTime);
+    RemoveEntity();
+    lastTime = now;
     }
     requestAnimFrame(main);
 };
@@ -107,15 +114,15 @@ function render(ctx) {
     ctx.drawImage(resources.get('images/backgrounds/Background.jpg'), background2.x, background2.y, background2.width, background2.height);
     DrawLife();
     DrawCookies();
-    DrawEntity(ctx);
+	DrawEntity(ctx);
     if (TempCollision > pastTime) {
         if (light) {
-            player.sprite.render(ctx);
+        player.sprite.render(ctx);
             light = !light;
-        }
+    }
         else {
-            light = !light;
-        }
+        light = !light;
+    }
     }
     else {
         player.sprite.render(ctx);
@@ -124,13 +131,13 @@ function render(ctx) {
 
 }
 function update(dt) {
-    background.update();
-    background2.update();
-    player.sprite.update(dt);
+	background.update();
+	background2.update();
+	player.sprite.update(dt);
     for (i = 0; i < GameObjects.length; i++)
         if (GameObjects[i].type == "Monster") {
             GameObjects[i].update(dt, 'sin');
-        }
+}
         else if (GameObjects[i].type == "Demon") {
             GameObjects[i].update(dt, 'cos');
         } else {
@@ -141,8 +148,8 @@ function update(dt) {
 
 function rand(min, max) {
     var rand = min - 0.5 + Math.random() * (max - min + 1)
-    rand = Math.round(rand);
-    return rand;
+	rand = Math.round(rand);
+	return rand;
 }
 
 document.getElementById("shot").addEventListener("touchstart", function (e) {
@@ -170,25 +177,25 @@ document.onkeydown = function (e) {
 }
 function DrawEntity(ctx) {
     for (i = 0; i < GameObjects.length; i++)
-        GameObjects[i].draw(ctx);
+		GameObjects[i].draw(ctx);
 }
 
 function AdditionEntities(pastTime) {
     if (pastTime > Icetemp) {
-        GameObjects.push(new GameObject("Ice", 48, 48, rand(canvas.width + 30, canvas.width + background.width), rand(50, canvas.height - 48), 'images/entities/Ice.png', rand(8, 15)));
+	    GameObjects.push(new GameObject("Ice", 48, 48, rand(canvas.width + 30, canvas.width + background.width), rand(50, canvas.height - 48), 'images/entities/Ice.png', rand(8, 15)));
         Icetemp = pastTime + 1;
-    }
+	}
     if (parseInt(pastTime, 10) > ghostTemp) {
         for (i = 0; i < rand(1, 4) ; i++)
             GameObjects.push(new GameObject("Monster", 100, 100, rand(canvas.width + 30, 10000), rand(50, canvas.height - 200), 'images/entities/Monster.png', rand(15, 20)));
         ghostTemp = parseInt(pastTime, 10) + rand(15, 20);
-    }
+	}
 
     if (parseInt(pastTime, 10) > Horsetemp) {
         for (i = 0; i < rand(1, 20) ; i++)
             GameObjects.push(new GameObject("Horse", 167, 100, rand(canvas.width + 30, 10000), rand(50, canvas.height - 56), 'images/entities/FrameHorse.png', rand(5, 10)));
         Horsetemp = parseInt(pastTime, 10) + rand(4, 8);
-    }
+	}
 
     if (parseInt(pastTime, 10) > demonTemp) {
         for (i = 0; i < rand(1, 20) ; i++)
@@ -212,11 +219,14 @@ function checkCollisions(pastTime) {
             if (player.collision(GameObjects[i]) && GameObjects[i].type != "Ice" && GameObjects[i].type != "Life" && GameObjects[i].type != "Ball") {
                 if (play && !GameEnd) {
                     if (GameObjects[i].type === "Horse") {
-                        SoundManager.play("Horse");
-                    }
+                    SoundManager.play("Horse");
+                }
                     if (GameObjects[i].type === "Monster") {
                         SoundManager.play("Monster");
                     }
+                    if (GameObjects[i].type === "Demon") {
+                        SoundManager.play("Demon");
+                }
                 }
                 player.life--;
                 TempCollision = parseInt(pastTime, 10) + 3;
@@ -238,6 +248,15 @@ function checkCollisions(pastTime) {
         if (GameObjects[i].type == "Ball") {
             for (j = 0; j < GameObjects.length; j++) {
                 if (GameObjects[i].collision(GameObjects[j]) && GameObjects[j].type != "Ball" && GameObjects[j].type != "Ice") {
+                    switch(GameObjects[j].type){
+                        case "Horse":
+                            hourseCounter++;
+                            break;
+                        case "Monster":
+                            gostCounter++;
+                            break
+                    }
+
                     GameObjects.splice(i, 1);
                     GameObjects.splice(j, 1);
                     break;
@@ -310,6 +329,23 @@ function GameOver() {
         saveScore(score);
     }
 
+    AchievSystem.saveKillsData("Hourse", hourseCounter);
+    AchievSystem.saveKillsData("Ghost", gostCounter);
+
+    if(hourseCounter > 100){
+        AchievSystem.emit("HK");
+        if(hourseCounter > 200){
+            AchievSystem.emit("MHK");
+        }
+    }
+
+    if(gostCounter > 100){
+        AchievSystem.emit("GK");
+        if(gostCounter > 200){
+            AchievSystem.emit("MGK");
+        }
+    }
+
     window.plugin.notification.local.add({
         id: '0001',
         at: new Date,
@@ -322,23 +358,23 @@ function GameOver() {
 
     $("#record").text(loadScore());
     document.getElementById('play-again').addEventListener('click', function () {
-        reset();
-    });
-}
+            reset();
+        });
+    }
 
 function reset() {
-    document.getElementById('game-over').style.display = 'none';
-    StartGame();
-}
+        document.getElementById('game-over').style.display = 'none';
+        StartGame();
+    }
 function MainMenu() {
-    $('#game-over').hide();
-    $('#PauseGame').hide();
-    $('#info').hide();
-    $('#achivment-list').hide();
-    $('#Menu').show();
-    play = false;
-    SoundManager.play("Main");
-}
+        $('#game-over').hide();
+        $('#PauseGame').hide();
+        $('#info').hide();
+        $('#achivment-list').hide();
+        $('#Menu').show();
+        play = false;
+        SoundManager.play("Main");
+    }
 
 function PauseGame() {
     play = !play;
@@ -356,7 +392,7 @@ document.getElementById("swipe").addEventListener("touchmove", function (event) 
 
         if (touches[0].pageY < canvas.height - player.height / 3 && touches[0].pageY > 50) {
             player.sprite.entity_pos[1] = touches[0].pageY - player.height / 2;
-        }
     }
 }
+    }
 );

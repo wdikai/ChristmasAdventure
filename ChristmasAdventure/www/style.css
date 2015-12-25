@@ -152,25 +152,35 @@ input[type="checkbox"]:checked + span {
     right: 0;
     bottom: 0;
     z-index: 1;
-    display: none;
+    background: url(images/backgrounds/Achiv.png) no-repeat;
+    background-size: cover;
+    display: none;    
+}
+
+#achivment-list ul{
+    margin-top: calc(50vh - 50px);
+    margin-right: 14vw;
+    text-align: center;
 }
 
 #achivment-list ul li {
-    display: block;
+    display: inline-block;
     border: 1px solid #000;
-    background-color: lime; 
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 50%;
+    background-color: #ffd540;
+    box-shadow: 0px 15px #af9000, 0px 16px #000;
+    width: 250px;
+    height: 250px;
 }
 
-.achivment img {
-    width: 100px;
-    height: 100px;
-    background-color: #000;
+.achivment{
+    width: 200px;
+    height: 200px;
+    margin-top: 30px;
 } 
 
 .empty-list {
+    display: none;
     height: 100px; 
     text-align: center;
     margin-top: calc(50vh - 15px);
