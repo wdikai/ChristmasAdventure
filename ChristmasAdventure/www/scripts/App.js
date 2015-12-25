@@ -19,6 +19,7 @@ var windSound = SoundManager.Sound("Wind", "sounds/wind.mp3", true);
 var snowSound = SoundManager.Sound("Snow", "sounds/snow.mp3");
 var horseSound = SoundManager.Sound("Horse", "sounds/horse.mp3");
 var monsterSound = SoundManager.Sound("Monster", "sounds/monster.mp3");
+var demonSound = SoundManager.Sound("Demon", "sounds/demon.mp3");
 var loseSound = SoundManager.Sound("Lose", "sounds/lose.mp3");
 SoundManager.addSound(mainSound);
 SoundManager.addSound(windSound);
@@ -26,6 +27,7 @@ SoundManager.addSound(snowSound);
 SoundManager.addSound(horseSound);
 SoundManager.addSound(loseSound);
 SoundManager.addSound(monsterSound);
+SoundManager.addSound(demonSound);
 SoundManager.play("Main");
 
 
@@ -216,6 +218,9 @@ function checkCollisions(pastTime) {
                 }
                     if (GameObjects[i].type === "Monster") {
                         SoundManager.play("Monster");
+                    }
+                    if (GameObjects[i].type === "Demon") {
+                        SoundManager.play("Demon");
                     }
                 }
                 player.life--;
