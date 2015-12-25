@@ -372,7 +372,6 @@ function GameOver() {
     SoundManager.stop("Wind");
     SoundManager.play("Lose");
     var TimeScore = document.getElementById('time-score');
-    var score = (pastTime * 5.5).toFixed();
     TimeScore.innerHTML = '<h1>Результат: ' + score + '</h1>';
     var lastScore = parseInt(loadScore());
     if (lastScore < score) {
