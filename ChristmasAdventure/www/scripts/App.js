@@ -9,16 +9,17 @@ var requestAnimFrame = (function () {
             window.setTimeout(callback, 1000 / 60);
         };
 })();
-var canvas = document.createElement("canvas");
+var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext('2d');
 canvas.width = document.documentElement.scrollWidth;
 canvas.height = document.documentElement.scrollHeight;
+
 function StartGame() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-document.getElementById('Menu').style.display = 'none';
-document.getElementById('PauseGame').style.display = 'none';
-document.body.appendChild(canvas);
-init();
+    document.getElementById('Menu').style.display = 'none';
+    document.getElementById('PauseGame').style.display = 'none';
+    document.body.appendChild(canvas);
+    init();
 }
 function init() {
     play = true;

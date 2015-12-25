@@ -4,8 +4,10 @@
     font-family: "Comic Sans MS";
 }
 
-canvas {
+#canvas {
     cursor:none;
+    width: 100%;
+    height: 100%;
 }
 
 #PauseGame h1{
