@@ -32,7 +32,6 @@
     "www\\images\\backgrounds\\InfoBackground.jpg",
     "www\\images\\ui\\Game_Over.png",
     "res\\screens\\android\\screen-hdpi-portrait.png",
-    "www\\sounds\\help.mp3",
     "www\\scripts\\score.js",
     "res\\icons\\windows\\StoreLogo.scale-240.png",
     "www\\images\\entities\\FrameHorse.png",
@@ -182,6 +181,7 @@
     "www\\sounds\\demon.mp3",
     "www\\scripts\\achievement.js",
     "www\\images\\acievements\\MostHourseKiller.png",
+    "www\\sounds\\help.mp3",
     "www\\scripts\\App.js"
   ],
   "deletedFilesIos": [
@@ -418,7 +418,11 @@
     "www\\sounds\\demon.mp3",
     "www\\scripts\\achievement.js",
     "www\\images\\acievements\\MostHourseKiller.png",
-    "www\\scripts\\App.js"
+    "www\\sounds\\help.mp3",
+    "www\\scripts\\App.js",
+    "www\\style.css",
+    "www\\sounds\\horse.mp3",
+    "www\\sounds\\snow.mp3"
   ],
   "deletedFiles": [],
   "addedPlugins": [
