@@ -168,6 +168,7 @@ input[type="checkbox"]:checked + span {
 } 
 
 #control-block {
+    display: none;
 }
 
 #swipe {
@@ -175,7 +176,6 @@ input[type="checkbox"]:checked + span {
     height: 100%;
     position: fixed;
     left: 0;
-    display: none;
 }
 
 #shot {
@@ -183,5 +183,4 @@ input[type="checkbox"]:checked + span {
     height: 100%;
     position: fixed;
     right: 0;
-    display: none;
 }

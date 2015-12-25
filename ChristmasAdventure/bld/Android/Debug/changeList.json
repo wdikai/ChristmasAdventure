@@ -98,13 +98,11 @@
     "www\\images\\entities\\Monster.png",
     "www\\scripts\\GameObject.js",
     "www\\scripts\\Sprite.js",
-    "www\\images\\ui\\Start.png",
     "www\\images\\backgrounds\\BG_Menu.png",
     "www\\images\\ui\\BackToMenu.png",
     "www\\images\\InfoImage.PNG",
     "www\\images\\entities\\Balls.png",
     "www\\images\\ui\\GOBackToMenu.png",
-    "www\\images\\ui\\Info.png",
     "www\\images\\ui\\Game_Over.png",
     "www\\images\\ui\\GORestart.png",
     "www\\images\\backgrounds\\ForPause.png",
@@ -159,11 +157,15 @@
     "Scripts\\jquery-2.1.4.js",
     "Scripts\\jquery-2.1.4.min.js",
     "Scripts\\jquery-2.1.4.min.map",
-    "www\\scripts\\5rxxbsjl.bl5~"
+    "www\\scripts\\5rxxbsjl.bl5~",
+    "www\\images\\ui\\Start.png",
+    "www\\images\\ui\\Info.png"
   ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [],
+  "changedFiles": [
+    "www\\style.css"
+  ],
   "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []
