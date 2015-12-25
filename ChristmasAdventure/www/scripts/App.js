@@ -193,7 +193,7 @@ function checkCollisions(pastTime) {
     if (TempCollision < parseInt(pastTime, 10)) {
         for (i = 0; i < GameObjects.length; i++) {
             if (player.collision(GameObjects[i]) && GameObjects[i].type != "Ice" && GameObjects[i].type != "Life" && GameObjects[i].type != "Ball") {
-                if(GameObjects[i].type === "Horse"){
+                if(GameObjects[i].type === "Horse" && play && !GameEnd){
                     SoundManager.play("Horse");
                 }
                 player.life--;
