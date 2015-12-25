@@ -16,7 +16,7 @@ canvas.height = document.documentElement.scrollHeight;
 
 var hourseCounter = 0;
 var gostCounter = 0;
-
+var backgroundFile = getBackground();
 var mainSound = SoundManager.Sound("Main", "sounds/help.mp3", true);
 var windSound = SoundManager.Sound("Wind", "sounds/wind.mp3", true);
 var snowSound = SoundManager.Sound("Snow", "sounds/snow.mp3");
@@ -51,13 +51,13 @@ init();
 function init() {
     play = true;
     light = true;
-    background = new GameObject("Background", 1366, canvas.height, 0, 0, 'images/backgrounds/Background.jpg', 7);
+    background = new GameObject("Background", 1366, canvas.height, 0, 0, backgroundFile, 7);
     background.update = function () {
         if (background.x < -background.width)
 		background.x = background2.x + background2.width;
 		background.x -= background.speed;
 	}
-    background2 = new GameObject("Background", background.width, canvas.height, background.width, 0, 'images/backgrounds/Background.jpg', background.speed);
+    background2 = new GameObject("Background", background.width, canvas.height, background.width, 0, backgroundFile, background.speed);
     background2.update = function () {
         if (background2.x < -background.width)
 		background2.x = background.x + background.width;
@@ -82,7 +82,7 @@ function init() {
     ctx.fillStyle = '#ccc';
     resources.load(
         [
-            'images/backgrounds/Background.jpg',
+            backgroundFile,
             'images/entities/Player.png',
             'images/entities/Ice.png', 
             'images/entities/FrameHorse.png', 
@@ -93,7 +93,19 @@ function init() {
             'images/Iceimg.png'
         ]);
 	resources.onReady(main);
-	}
+}
+
+function getBackground() {
+    var result;
+    var number = rand(1, 2);
+    if (number == 1) {
+        result = 'images/backgrounds/Background.jpg';
+    }
+    if (number == 2) {
+        result = 'images/backgrounds/Background1.jpg';
+    }
+    return result;
+}
 var lastTime;
 function main() {
     if (play == true && GameEnd == false) {
@@ -110,8 +122,8 @@ function main() {
     requestAnimFrame(main);
 };
 function render(ctx) {
-    ctx.drawImage(resources.get('images/backgrounds/Background.jpg'), background.x, background.y, background.width, background.height);
-    ctx.drawImage(resources.get('images/backgrounds/Background.jpg'), background2.x, background2.y, background2.width, background2.height);
+    ctx.drawImage(resources.get(backgroundFile), background.x, background.y, background.width, background.height);
+    ctx.drawImage(resources.get(backgroundFile), background2.x, background2.y, background2.width, background2.height);
     DrawLife();
     DrawCookies();
 	DrawEntity(ctx);
@@ -226,7 +238,7 @@ function checkCollisions(pastTime) {
                     }
                     if (GameObjects[i].type === "Demon") {
                         SoundManager.play("Demon");
-                    }
+                }
                 }
                 player.life--;
                 TempCollision = parseInt(pastTime, 10) + 3;
@@ -345,6 +357,16 @@ function GameOver() {
             AchievSystem.emit("MGK");
         }
     }
+
+    window.plugin.notification.local.add({
+        id: '0001',
+        at: new Date,
+        text: 'hello',
+        title: 'title',
+        badge: 1,
+        autoCancel: true,
+        ongoing: true
+    });
 
     $("#record").text(loadScore());
     document.getElementById('play-again').addEventListener('click', function () {
