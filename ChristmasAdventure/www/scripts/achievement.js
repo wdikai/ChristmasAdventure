@@ -55,15 +55,17 @@ window.AchievSystem = {
 		loadAchivs();
 		console.log(myAchivs);
 		var temp = [];
-		for (var i = 0; i < myAchivs.length; i++) {
-			for (var k = 0; k < achiv.length; k++) {
-				if(myAchivs[i] === achiv[k].id){
-					temp.push(achiv[k]);
-				}
-			}
-		}
+	    if (myAchivs.length) {
+	        for (var i = 0; i < myAchivs.length; i++) {
+	            for (var k = 0; k < achiv.length; k++) {
+	                if (myAchivs[i] === achiv[k].id) {
+	                    temp.push(achiv[k]);
+	                }
+	            }
+	        }
+	    }
 
-		return temp;
+	    return temp;
 	},
 	loadKillsData: loadKillsData,
 	saveKillsData: saveKillsData,
