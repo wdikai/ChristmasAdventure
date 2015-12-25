@@ -16,9 +16,13 @@
             <input type="image" src="images/ui/GORestart.png" id="play-again" onclick="reset()">
         </div>
         <div id="Menu">
-            <input id="First" type="image" src="images/ui/Start.png" onclick=" StartGame() ">
-            <br/>
-            <input type="image" src="images/ui/Info.png" onclick="Information()">
+            <div class="menu">
+                <div class="button" onclick="StartGame()">Играть</div> 
+                <br/>
+                <div class="button" onclick="Information()">Достижения</div> 
+                <br/>
+                <div class="button" onclick="Information()">Об игре</div> 
+            </div>
         </div>
     <div id="PauseGame">
         <input class="back-to-menu" type="image" src="images/ui/GOBackToMenu.png" onclick="MainMenu()">
