@@ -55,7 +55,7 @@ window.AchievSystem = {
 		loadAchivs();
 		console.log(myAchivs);
 		var temp = [];
-	    if (myAchivs.length) {
+	    if (myAchivs) {
 	        for (var i = 0; i < myAchivs.length; i++) {
 	            for (var k = 0; k < achiv.length; k++) {
 	                if (myAchivs[i] === achiv[k].id) {
