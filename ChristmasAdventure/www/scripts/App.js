@@ -310,6 +310,7 @@ function GameOver() {
         saveScore(score);
     }
 
+
     $("#record").text(loadScore());
     document.getElementById('play-again').addEventListener('click', function () {
             reset();
