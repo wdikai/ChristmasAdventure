@@ -97,12 +97,15 @@ function init() {
 
 function getBackground() {
     var result;
-    var number = rand(1, 2);
+    var number = rand(1, 3);
     if (number == 1) {
         result = 'images/backgrounds/Background.jpg';
     }
     if (number == 2) {
         result = 'images/backgrounds/Background1.jpg';
+    }
+    if (number == 3) {
+        result = 'images/backgrounds/Background2.jpg';
     }
     return result;
 }
