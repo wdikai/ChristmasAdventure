@@ -127,14 +127,14 @@ document.onclick = function (e) {
 
 }
 document.onkeydown = function (e) {
-    var kodKlavishi;
+    var keyCode;
     if (e) {
-        kodKlavishi = e.which;
+        keyCode = e.which;
     }
     else if (window.event) {
-        kodKlavishi = window.event.keyCode;
+        keyCode = window.event.keyCode;
     }
-    if (kodKlavishi == 27 && pastTime > 1 && GameEnd == false) {
+    if (keyCode == 27 && pastTime > 1 && GameEnd == false) {
         PauseGame();
     }
 
@@ -252,6 +252,8 @@ function GameOver() {
         document.getElementById('game-over').style.display = 'block';
         play = false;
         GameEnd = true;
+        document.getElementById('UpButton').style.display = 'none';
+        document.getElementById('BottomButton').style.display = 'none';
         document.getElementById('PauseGame').style.display = 'none';
         var TimeScore = document.getElementById('time-score');
         TimeScore.innerHTML = '<h1>Scores: ' + (pastTime * 5.5).toFixed() + '</h1>';
@@ -268,7 +270,7 @@ function MainMenu() {
         document.getElementById('game-over').style.display = 'none';
         document.getElementById('PauseGame').style.display = 'none';
         document.getElementById('info').style.display = 'none';
-        canvas.style.display = 'none';
+        //canvas.style.display = 'none';
         document.getElementById('Menu').style.display = 'block';
         play = false;
     }
