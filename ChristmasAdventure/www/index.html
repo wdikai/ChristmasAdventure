@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+        <canvas id="canvas"></canvas>
         <div id="game-over">
             <input type="image" src="images/ui/GOBackToMenu.png" id="back-to-menu" onclick="MainMenu()">
             <img id="GameOverImg" src="images/ui/Game_Over.png" height="160" width="300">
@@ -17,7 +18,7 @@
         </div>
         <div id="Menu">
             <div class="menu">
-                <div class="button" onclick="StartGame()">Играть</div> 
+                <div class="button" id="game-button">Играть</div> 
                 <br/>
                 <div class="button" id="achivement-button">Достижения</div> 
                 <br/>

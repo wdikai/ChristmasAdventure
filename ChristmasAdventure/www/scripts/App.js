@@ -9,16 +9,17 @@ var requestAnimFrame = (function () {
             window.setTimeout(callback, 1000 / 60);
         };
 })();
-var canvas = document.createElement("canvas");
+var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext('2d');
 canvas.width = document.documentElement.scrollWidth;
 canvas.height = document.documentElement.scrollHeight;
+
 function StartGame() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-document.getElementById('Menu').style.display = 'none';
-document.getElementById('PauseGame').style.display = 'none';
-document.body.appendChild(canvas);
-init();
+    document.getElementById('Menu').style.display = 'none';
+    document.getElementById('PauseGame').style.display = 'none';
+    $("#canvas").show();
+    init();
 }
 function init() {
     play = true;
@@ -246,13 +247,14 @@ function DrawLife() {
     }
 }
 function GameOver() {
-        document.getElementById('game-over').style.display = 'block';
-        play = false;
-        GameEnd = true;
-       
-        document.getElementById('PauseGame').style.display = 'none';
-        var TimeScore = document.getElementById('time-score');
-        TimeScore.innerHTML = '<h1>Scores: ' + (pastTime * 5.5).toFixed() + '</h1>';
+    $("canvas").hide();
+    document.getElementById('game-over').style.display = 'block';
+    play = false;
+    GameEnd = true;
+   
+    document.getElementById('PauseGame').style.display = 'none';
+    var TimeScore = document.getElementById('time-score');
+    TimeScore.innerHTML = '<h1>Scores: ' + (pastTime * 5.5).toFixed() + '</h1>';
     document.getElementById('play-again').addEventListener('click', function () {
             reset();
         });
