@@ -140,7 +140,8 @@
     "www\\images\\entities\\Monets.png",
     "www\\images\\entities\\Sandman.png",
     "www\\images\\entities\\Sand.png",
-    "www\\images\\entities\\SandBalls.png"
+    "www\\images\\entities\\SandBalls.png",
+    "www\\images\\backgrounds\\Background2.jpg"
   ],
   "deletedFilesIos": [
     "plugins\\cordova-plugin-file\\www\\DirectoryEntry.js",
@@ -363,22 +364,7 @@
     "cordova-plugin-dialogs"
   ],
   "changedFiles": [
-    "config.xml",
-    "www\\index.html",
-    "www\\scripts\\app.js",
-    "www\\scripts\\Audio.js",
-    "www\\scripts\\menu.js",
-    "www\\style.css",
-    "www\\images\\backgrounds\\Background1.jpg",
-    "www\\images\\ui\\Feya.gif",
-    "www\\images\\ui\\J_Animation.gif",
-    "www\\images\\ui\\Sandman.gif",
-    "www\\images\\entities\\Teeth.png",
-    "www\\images\\entities\\Fairy.png",
-    "www\\images\\entities\\Monets.png",
-    "www\\images\\entities\\Sandman.png",
-    "www\\images\\entities\\Sand.png",
-    "www\\images\\entities\\SandBalls.png"
+    "www\\scripts\\app.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],
