@@ -1,78 +1,79 @@
 ﻿<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Christmas Adventure</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <div id="game-over">
-        <input type="image" src="images/ui/GOBackToMenu.png" id="back-to-menu" onclick="MainMenu()">
-        <img id="GameOverImg" src="images/ui/Game_Over.png" height="160" width="300">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Christmas Adventure</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <div id="game-over">
+            <input type="image" src="images/ui/GOBackToMenu.png" id="back-to-menu" onclick="MainMenu()">
+            <img id="GameOverImg" src="images/ui/Game_Over.png" height="160" width="300">
         <br />
-        <div id="time-score">
-            <h1>x1</h1>
-        </div>
+            <div id="time-score">
+                <h1>x1</h1>
+            </div>
         <br />
-        <input type="image" src="images/ui/GORestart.png" id="play-again" onclick="reset()">
-    </div>
-    <div id="Menu">
-        <div class="menu">
-            <div class="button" onclick="StartGame()">Играть</div>
-            <br />
-            <div class="button" id="achivement-button">Достижения</div>
-            <br />
-            <div class="button" id="info-button">Об игре</div>
+            <input type="image" src="images/ui/GORestart.png" id="play-again" onclick="reset()">
         </div>
-    </div>
-    <div id="PauseGame">
-        <input class="back-to-menu" type="image" src="images/ui/GOBackToMenu.png" onclick="MainMenu()">
-        <h1>Game Paused</h1>
-        <div style="margin-top: 30%;margin-left: 25%;position: absolute;">
-            <input type="image" src="images/ui/GORestart.png" onclick="reset()">
+        <div id="Menu">
+            <div class="menu">
+                <div class="button" id="game-button">Играть</div> 
+                <br/>
+                <div class="button" id="achivement-button">Достижения</div> 
+            <br />
+                <div class="button" id="info-button">Об игре</div> 
+            </div>
         </div>
-    </div>
-    <div id="info">
-        <input type="image" src="images/ui/BackToMenu.png" onclick="MainMenu()" style="float: left;">
+        <div id="PauseGame">
+            <input class="back-to-menu" type="image" src="images/ui/GOBackToMenu.png" onclick="MainMenu()">
+                <h1>Game Paused</h1>
+                <div style="margin-top: 30%;margin-left: 25%;position: absolute;">
+                <input type="image" src="images/ui/GORestart.png" onclick="reset()">
+            </div>
+        </div>
+        <div id="info">
+            <input type="image" src="images/ui/BackToMenu.png" onclick="MainMenu()" style="float: left;">
         <h1 style="color: #0e49f0;margin-left:45%;">Об игре</h1>
-        <img src="images/InfoImage.PNG" />
-        <p>
-            Данная игра была создана по мотивам мультфильма "Хранители снов". Основными врагами является служители злого духа Кромешника.
-            Для того, чтобы начать игру требуется нажать кнопку "Start". Для управления персонажем в игровой области вам необходимо перемещать мышь и нажимать на левую клавишу,чтобы атаковать. Чтобы пополнить свой запас жизней требуется собирать "сердца", которые переодически появляются на карте. Также для того, чтобы ваш персонаж мог атаковать следует собирать снежинки, которые являются вашими боеприпасами. Их количество отображается в правом верхнем углу экрана. Пауза игры вызывается клавишей "Escape".
-            Игра является бесконечной, а ваша цель заключается в том, чтобы набрать наибольшее количество очков. Приятной игры !
-        </p>
-    </div>
-    <div id="achivment-list">
+            <img src="images/InfoImage.PNG" />
+            <p>
+                Данная игра была создана по мотивам мультфильма "Хранители снов". Основными врагами является служители злого духа Кромешника.
+                Для того, чтобы начать игру требуется нажать кнопку "Start". Для управления персонажем в игровой области вам необходимо перемещать мышь и нажимать на левую клавишу,чтобы атаковать. Чтобы пополнить свой запас жизней требуется собирать "сердца", которые переодически появляются на карте. Также для того, чтобы ваш персонаж мог атаковать следует собирать снежинки, которые являются вашими боеприпасами. Их количество отображается в правом верхнем углу экрана. Пауза игры вызывается клавишей "Escape".
+                Игра является бесконечной, а ваша цель заключается в том, чтобы набрать наибольшее количество очков. Приятной игры !
+            </p>
+            </div>
+        <div id="achivment-list">
         <div class="empty-list">Нет ни одного достижения!</div>
-        <ul class="achivment-list">
-            <li>
-                <div class="achivment">
-                    <img src="" alt="">
+            <ul class="achivment-list">
+                <li>
+                    <div class="achivment">
+                        <img src="" alt="">
+        </div>
+                </li>
+                <li>
+                    <div class="achivment">
+                        <img src="" alt="">
                 </div>
-            </li>
-            <li>
-                <div class="achivment">
-                    <img src="" alt="">
-                </div>
-            </li>
-        </ul>
-    </div>
+                </li>
+            </ul>
+        </div>
     <div id="control-block">
         <div id="swipe">
         </div>
         <div id="shot">
         </div>
     </div>
-</body>
+    </body>
 
-<script src="scripts/jquery-2.1.4.min.js"></script>
+    <script src="scripts/jquery-2.1.4.min.js"></script>
 
-<script src="scripts/resources.js"></script>
-<script src="scripts/Sprite.js"></script>
-<script src="scripts/GameObject.js"></script>
-<script src="scripts/Something.js"></script>
-<script src="scripts/Panel.js"></script>
+    <script src="scripts/resources.js"></script>
+    <script src="scripts/Sprite.js"></script>
+    <script src="scripts/GameObject.js"></script>
+    <script src="scripts/Something.js"></script>
+    <script src="scripts/Panel.js"></script>
 
-<script src="scripts/App.js"></script>
+    <script src="scripts/App.js"></script>
 
-<script src="scripts/menu.js"></script>
+    <script src="scripts/menu.js"></script>
 </html>
