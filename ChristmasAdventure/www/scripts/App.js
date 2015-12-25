@@ -14,6 +14,9 @@ var ctx = canvas.getContext('2d');
 canvas.width = document.documentElement.scrollWidth;
 canvas.height = document.documentElement.scrollHeight;
 
+var hourseCounter = 0;
+var gostCounter = 0;
+
 var mainSound = SoundManager.Sound("Main", "sounds/help.mp3", true);
 var windSound = SoundManager.Sound("Wind", "sounds/wind.mp3", true);
 var snowSound = SoundManager.Sound("Snow", "sounds/snow.mp3");
@@ -26,10 +29,12 @@ SoundManager.addSound(horseSound);
 SoundManager.addSound(loseSound);
 SoundManager.play("Main");
 
-
 function StartGame() {
     SoundManager.stop("Main");
     SoundManager.play("Wind");
+    hourseCounter = AchievSystem.loadKillsData("Hourse");
+    gostCounter = AchievSystem.loadKillsData("Ghost");
+
     canvas.width = document.documentElement.scrollWidth;
     canvas.height = document.documentElement.scrollHeight;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -195,7 +200,7 @@ function checkCollisions(pastTime) {
             if (player.collision(GameObjects[i]) && GameObjects[i].type != "Ice" && GameObjects[i].type != "Life" && GameObjects[i].type != "Ball") {
                 if(GameObjects[i].type === "Horse" && play && !GameEnd){
                     SoundManager.play("Horse");
-                }
+                } 
                 player.life--;
                 TempCollision = parseInt(pastTime, 10) + 3;
                 break;
@@ -216,6 +221,15 @@ function checkCollisions(pastTime) {
         if (GameObjects[i].type == "Ball") {
             for (j = 0; j < GameObjects.length; j++) {
                 if (GameObjects[i].collision(GameObjects[j]) && GameObjects[j].type != "Ball" && GameObjects[j].type != "Ice") {
+                    switch(GameObjects[j].type){
+                        case "Horse":
+                            hourseCounter++;
+                            break;
+                        case "Monster":
+                            gostCounter++;
+                            break
+                    }
+
                     GameObjects.splice(i, 1);
                     GameObjects.splice(j, 1);
                     break;
@@ -286,6 +300,23 @@ function GameOver() {
     var lastScore = parseInt(loadScore());
     if(lastScore < score){
         saveScore(score);
+    }
+
+    AchievSystem.saveKillsData("Hourse", hourseCounter);
+    AchievSystem.saveKillsData("Ghost", gostCounter);
+
+    if(hourseCounter > 100){
+        AchievSystem.emit("HK");
+        if(hourseCounter > 200){
+            AchievSystem.emit("MHK");
+        }
+    }
+
+    if(gostCounter > 100){
+        AchievSystem.emit("GK");
+        if(gostCounter > 200){
+            AchievSystem.emit("MGK");
+        }
     }
 
     $("#record").text(loadScore());
