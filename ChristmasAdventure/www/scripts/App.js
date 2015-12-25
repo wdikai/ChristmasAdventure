@@ -1,4 +1,4 @@
-// Create the canvas
+﻿// Create the canvas
 var requestAnimFrame = (function () {
     return window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
@@ -258,7 +258,14 @@ function GameOver() {
         document.getElementById('control-block').style.display = 'none';
         document.getElementById('PauseGame').style.display = 'none';
         var TimeScore = document.getElementById('time-score');
-        TimeScore.innerHTML = '<h1>?????????: ' + (pastTime * 5.5).toFixed() + '</h1>';
+    var score = (pastTime * 5.5).toFixed();
+    TimeScore.innerHTML = '<h1>Результат: ' + score + '</h1>';
+    var lastScore = loadScore();
+    if(lastScore < score){
+        saveScore(score);
+    }
+
+    $("#record").text(loadScore());
     document.getElementById('play-again').addEventListener('click', function () {
             reset();
         });

@@ -18,5 +18,7 @@
 		});
 
 		$("#game-button").click(StartGame);
+
+		$("#record").text(loadScore());
 	});
 })()
