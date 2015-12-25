@@ -374,8 +374,8 @@ function GameOver() {
     var TimeScore = document.getElementById('time-score');
     TimeScore.innerHTML = '<h1>Результат: ' + scores + '</h1>';
     var lastScore = parseInt(loadScore());
-    if (lastScore < score) {
-        saveScore(score);
+    if (lastScore < scores) {
+        saveScore(scores);
     }
 
     AchievSystem.saveKillsData("Hourse", hourseCounter);
