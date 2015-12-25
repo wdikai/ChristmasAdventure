@@ -357,6 +357,7 @@ function reset() {
         StartGame();
     }
 function MainMenu() {
+        $("#pick-character").hide();
         $('#game-over').hide();
         $('#PauseGame').hide();
         $('#info').hide();

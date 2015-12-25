@@ -2,6 +2,7 @@
 (function(){
 	$(window).load(function(){
 		$("#info-button").click(function information(){
+			$("#pick-character").hide();
 			$("#game-over").hide();
 			$("#PauseGame").hide();
 			$("#Menu").hide();
@@ -10,7 +11,7 @@
 		});
 
 		$("#achivement-button").click(function(){
-			$("#game-over").hide();
+			$("#pick-character").hide();
 			$("#PauseGame").hide();
 			$("#Menu").hide();
 			$("#info").hide();
@@ -28,7 +29,28 @@
 			}
 		});
 
-		$("#game-button").click(StartGame);
+		$("#game-button").click(function(){
+			$("#Menu").hide();
+			$("#game-over").hide();
+			$("#PauseGame").hide();
+			$("#Menu").hide();
+			$("#achivment-list").hide();
+			$("#info").hide();
+			$("#pick-character").show();
+		});
+
+		$("#jack-button").click(function(){
+        	$("#pick-character").hide();
+			StartGame("jack");
+		});
+		$("#sand-button").click(function(){
+        	$("#pick-character").hide();
+			StartGame("sand");
+		});
+		$("#fairy-button").click(function(){
+        	$("#pick-character").hide();
+			StartGame("fairy");
+		});
 
 		$("#record").text(loadScore());
 	});

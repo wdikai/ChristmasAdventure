@@ -17,6 +17,7 @@
 		this.audio.loop = (loop || false);
 	}
 	Sound.prototype.play = function() {
+	    this.audio.currentTime = 0;
 		this.audio.play();
 	};
 	Sound.prototype.stop = function() {
