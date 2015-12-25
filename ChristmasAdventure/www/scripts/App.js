@@ -118,7 +118,7 @@ function rand(min, max) {
 	return rand;
 }
 
-$("shot").clic(function (e) {
+$("shot").click(function (e) {
     if (pastTime > 1 && player.ice > 0 && GameEnd == false && e.offsetX > canvas.width / 2) {
         Ball = new GameObject("Ball", 20, 20, player.sprite.entity_pos[0] + player.width, player.sprite.entity_pos[1] + player.height, 'images/entities/Balls.png', 10);
         Ball.collision = player.collision;
