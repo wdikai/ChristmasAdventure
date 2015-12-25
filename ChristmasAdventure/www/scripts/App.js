@@ -371,16 +371,6 @@ function GameOver() {
         }
     }
 
-    window.plugin.notification.local.add({
-        id: '0001',
-        at: new Date,
-        text: 'hello',
-        title: 'title',
-        badge: 1,
-        autoCancel: true,
-        ongoing: true
-    });
-
     $("#record").text(loadScore());
     document.getElementById('play-again').addEventListener('click', function () {
             reset();
